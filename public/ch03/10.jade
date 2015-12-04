@@ -1,0 +1,45 @@
+doctype html
+html(lang='en')
+  head
+    title Simple Layout
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='description',content='')
+    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic')
+    style.
+      div.flex {
+        border: 1px dotted gray;
+        padding: 8px;
+      }
+      div.layout-row {
+        background-color: #90caf9;
+      }
+      div.layout-column {
+        background-color: #ffe0b2;
+        text-align: center;
+      }
+  body(ng-app='myApp')
+    div(layout='row')
+      div(flex=33) 33%
+      div(flex) (66%)
+    div(layout='row')
+      div(flex=66) 66%
+      div(flex) (9%)
+      div(flex=25) 25%
+    div(layout='column',style='margin-top:24px;')
+      div(flex=20) 20%
+      div(flex) (40%)
+      div(flex) (40%)
+    div(layout='column',style='height:200px; margin-top:24px;')
+      div(flex=20) 20%
+      div(flex) (40%)
+      div(flex) (50%)
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    script(type='text/javascript')
+      :coffee-script
+        angular.module 'myApp', ['ngMaterial']

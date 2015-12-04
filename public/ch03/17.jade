@@ -1,0 +1,37 @@
+doctype html
+html(lang='en')
+  head
+    title Simple Layout
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='description',content='')
+    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic')
+    style.
+      div {
+        padding: 8px;
+        text-align: center;
+        border: 1px dotted gray;
+        background-color: #ffe0b2;
+      }
+  body(ng-app='myApp',layout='column')
+    div(layout-gt-sm='row',layout-sm='column')
+      div(flex) Cell #1
+      div(flex) Cell #2
+      div(flex) Cell #3
+    div(layout='row',layout-wrap,style='margin-top:24px;')
+      div(flex=25,flex-md=33,flex-sm=50) Cell #4
+      div(flex=25,flex-md=33,flex-sm=50) Cell #5
+      div(flex=25,flex-md=33,flex-sm=50) Cell #6
+      div(flex=25,flex-md=33,flex-sm=50) Cell #7
+      div(flex=25,flex-md=33,flex-sm=50) Cell #8
+      div(flex=25,flex-md=33,flex-sm=50) Cell #9
+    
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    script(type='text/javascript')
+      :coffee-script
+        angular.module 'myApp', ['ngMaterial']

@@ -1,0 +1,36 @@
+doctype html
+html(lang='en')
+  head
+    title Simple Layout
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='description',content='')
+    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic')
+    style.
+      div {
+        border: 1px solid gray;
+        text-align: center;
+        padding: 16px;
+        height: 80px;
+      }
+  body(ng-app='myApp',layout='column')
+    md-content(layout='column',flex)
+      div(flex)
+        div(layout='row',flex,layout-wrap)
+          div(flex=25) Cell #1
+          div(flex=25) Cell #2
+          div(flex=25) Cell #3
+          div(flex=25) Cell #4
+          div(flex=25) Cell #5
+          div(flex=25) Cell #6
+    md-toolbar.md-toolbar-tools Footer
+    
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    script(type='text/javascript')
+      :coffee-script
+        angular.module 'myApp', ['ngMaterial']

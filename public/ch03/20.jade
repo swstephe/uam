@@ -1,0 +1,57 @@
+doctype html
+html(lang='en')
+  head
+    title Simple Layout
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='description',content='')
+    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic')
+    style(type='text/css')
+      |div.flex {
+      |  border: 1px solid gray;
+      |  color: black;
+      |  text-align: center;
+      |  padding: 16px;
+      |  height: 80px;
+      |}
+  body(ng-app='myApp',layout='column',ng-controller='LayoutController as lc')
+    div(layout='column')
+      md-toolbar(layout='row')
+        h1 &nbsp;&nbsp;{{lc.screenSize}}
+      md-content#content
+        div(layout='column')
+          div(flex) Always visible #1
+          div(flex,hide-gt-sm) Visible on small #1
+          div(flex,hide-sm,hide-lg) Visible on medium #1
+          div(flex,hide-sm,hide-md) Visible on large #1
+          div(flex,hide,show-sm) Visible on small #2
+          div(flex,hide,show-md) Visible on medium #2
+          div(flex,hide,show-lg) Visible on large #2
+          div(flex,hide) Always hidden
+          div(flex,hide,show) Always visible #2
+    
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    script(type='text/javascript')
+      :coffee-script
+        angular
+        .module 'layout', []
+        .controller 'LayoutController', [
+          '$mdMedia'
+          '$scope'
+          class LayoutController
+            constructor: ($mdMedia, $scope) ->
+              self = @
+              $scope.$watch(
+                ->
+                  return 'small' if $mdMedia('sm')
+                  return 'medium' if $mdMedia('md')
+                  'large'
+                (size) -> self.screenSize = size
+              )
+        ]
+        angular.module 'myApp', ['ngMaterial','layout']
