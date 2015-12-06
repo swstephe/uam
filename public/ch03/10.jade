@@ -9,22 +9,22 @@ html(lang='en')
     link(rel='stylesheet',href='/angular-material/angular-material.css')
     link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic')
     style.
-      div.flex {
+      div.flex, div.flex-20, div.flex-25, div.flex-33, div.flex-66 {
         border: 1px dotted gray;
         padding: 8px;
       }
       div.layout-row {
-        background-color: #90caf9;
+        background-color: #90CAF9;  /* Blue 200 */
       }
       div.layout-column {
-        background-color: #ffe0b2;
+        background-color: #FFE0B2;  /* Orange 100 */
         text-align: center;
       }
   body(ng-app='myApp')
     div(layout='row')
       div(flex=33) 33%
-      div(flex) (66%)
-    div(layout='row')
+      div(flex) (67%)
+    div(layout='row',style='margin-top:24px;')
       div(flex=66) 66%
       div(flex) (9%)
       div(flex=25) 25%
@@ -35,7 +35,7 @@ html(lang='en')
     div(layout='column',style='height:200px; margin-top:24px;')
       div(flex=20) 20%
       div(flex) (40%)
-      div(flex) (50%)
+      div(flex) (40%)
     script(src='/angular/angular.js')
     script(src='/angular-animate/angular-animate.js')
     script(src='/angular-aria/angular-aria.js')

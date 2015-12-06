@@ -6,16 +6,16 @@ html(lang='en')
     meta(http-equiv='X-UA-Compatible',content='IE=edge')
     meta(name='description',content='')
     meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
-    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic')
     link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic')
     style.
       md-toolbar h1 {
-        margin: autho;
+        margin: auto;
         font-weight: 400;
       }
 
       md-toolbar.small h1 {
-        font-size: 1.2em;
+        font-size: 1.25em;
         margin: auto 0;
         padding-left: 16px;
       }
@@ -48,15 +48,15 @@ html(lang='en')
         .controller 'LayoutController', [
           '$mdMedia'
           '$scope'
-          class LayoutController
-            title: "Simple Layout"
-            sectionTitle: "Section #1"
-            sectionBody: "This is a simple section."
-            constructor: ($mdMedia, $scope) ->
-              self = @
-              $scope.$watch(
-                -> if $mdMedia('sm') then 'small' else 'large'
-                (size) -> self.screenSize = size
-              )
+          ($mdMedia, $scope) ->
+            self = @
+            self.title = "Simple Layout"
+            self.sectionTitle = "Section #1"
+            self.sectionBody = "This is a simple section."
+            $scope.$watch(
+              -> if $mdMedia('sm') then 'small' else 'large'
+              (size) -> self.screenSize = size
+            )
+            true
         ]
         angular.module 'myApp', ['ngMaterial','layout']

@@ -6,8 +6,8 @@ html(lang='en')
     meta(http-equiv='X-UA-Compatible',content='IE=edge')
     meta(name='description',content='')
     meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
-    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic')
     link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic')
   body(
     ng-app='myApp'
     layout='column'
@@ -27,17 +27,10 @@ html(lang='en')
         angular
         .module 'layout', []
         .controller 'LayoutController', [
-          '$mdMedia'
-          '$scope'
-          class LayoutController
-            title: "Simple Layout"
-            sectionTitle: "Section #1"
-            sectionBody: "This is a simple section."
-            constructor: ($mdMedia, $scope) ->
-              self = @
-              $scope.$watch(
-                -> if $mdMedia('sm') then 'small' else 'large'
-                (size) -> self.screenSize = size
-              )
+          ->
+            self = @
+            self.title = "Simple Layout"
+            self.sectionTitle = "Section #1"
+            self.sectionBody = "This is a simple section."
         ]
         angular.module 'myApp', ['ngMaterial','layout']

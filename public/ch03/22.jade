@@ -1,7 +1,7 @@
 doctype html
 html(lang='en')
   head
-    title Simple Layout
+    title Whiteframes
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible',content='IE=edge')
     meta(name='description',content='')
@@ -9,10 +9,11 @@ html(lang='en')
     link(rel='stylesheet',href='/angular-material/angular-material.css')
     link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic')
   body(ng-app='myApp',layout='row')
+    // Single column
     div(flex,layout='column')
       md-toolbar.md-toolbar-tools
         h1 Whiteframes and dividers
-      md-content(flex,style='background-color:#e0e0e0;')
+      md-content(flex,style='background-color:#E0E0E0;')
         div(style='background-color:white',layout-margin)
           .md-whiteframe-z2(layout-padding)
             h1.md-display-1 md-whiteframe-z2
