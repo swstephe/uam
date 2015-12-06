@@ -1,0 +1,113 @@
+doctype html
+html(lang='en')
+  head
+    title Icons
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='description',content='')
+    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic')
+    style.
+      .svg-icons .size-18 {
+        height: 18px;
+        width: 18px;
+      }
+
+      .svg-icons .size-24 {
+        height: 24px;
+        width: 24px;
+      }
+
+      .svg-icons .size-36 {
+        height: 36px;
+        width: 36px;
+      }
+
+      .svg-icons .size-48 {
+        height: 48px;
+        width: 48px;
+      }
+
+      .svg-icons .red {
+        color: #F44336; /* Red 500 */
+      }
+
+      .svg-icons .green {
+        color: #4CAF50; /* Green 500 */
+      }
+
+      .svg-icons .blue {
+        color: #2196F3; /* Blue 500 */
+      }
+
+  body(ng-app='myApp',layout='column')
+    .svg-icons(layout='column',layout-fill)
+      md-toolbar
+        .md-toolbar-tools SVG icons (icon set)
+      md-content
+        div(layout='row',layout-padding)
+          div(flex=33)
+            | Jake
+            br
+            md-icon(md-svg-icon='my:jake')
+          div(flex=33)
+            | Headset
+            br
+            md-icon(md-svg-icon='my:george')
+          div(flex=33)
+            | Memory
+            br
+            md-icon(md-svg-icon='computer')
+      md-toolbar
+        .md-toolbar-tools Icon sizes
+      md-content
+        div(layout='row',layout-padding)
+          div(flex=25)
+            | 18px
+            br
+            md-icon.size-18(md-svg-icon='george')
+          div(flex=25)
+            | 24px
+            br
+            md-icon.size-24(md-svg-icon='my:george')
+          div(flex=25)
+            | 36px
+            br
+            md-icon.size-36(md-svg-icon='my:george')
+          div(flex=25)
+            | 48px
+            br
+            md-icon.size-48(md-svg-icon='my:george')
+      md-toolbar
+        .md-toolbar-tools Icon colors
+      md-content
+        div(layout='row',layout-padding)
+          div(flex=25)
+            | Red
+            br
+            md-icon.size-36.red(md-svg-icon='memory')
+          div(flex=25)
+            | Green
+            br
+            md-icon.size-36.green(md-svg-icon='memory')
+          div(flex=25)
+            | Blue
+            br
+            md-icon.size-36.blue(md-svg-icon='memory')
+          div(flex=25)
+            | Purple
+            br
+            md-icon.size-36(md-svg-icon='memory',style='color: purple')
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    script(type='text/javascript')
+      :coffee-script
+        angular
+        .module 'myApp', ['ngMaterial']
+        .config ($mdIconProvider) ->
+          $mdIconProvider.iconSet 'my', 'icons/myIconSet.svg'
+          $mdIconProvider.icon 'computer', 'icons/ic_computer_24px.svg'
+          $mdIconProvider.defaultIconSet 'icons/myIconSet.svg', 24

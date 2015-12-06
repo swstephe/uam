@@ -1,0 +1,36 @@
+doctype html
+html(lang='en')
+  head
+    title Heading styles
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='description',content='')
+    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900,300italic,400italic,500italic,700italic,900italic')
+    style.
+      h1 {
+        font-family: Roboto;
+        margin: 8px 0;
+      }
+  body(ng-app='myApp',layout='column')
+    md-toolbar
+      .md-toolbar-tools Roboto weight and styles
+    md-content(layout='column',layout-margin,layout-padding)
+      h1(style='font-weight: 300') Roboto Light (300)
+      h1(style='font-weight: 400') Roboto Regular (400)
+      h1(style='font-weight: 500') Roboto Medium (500)
+      h1(style='font-weight: 700') Roboto Bold (700)
+      h1(style='font-weight: 900') Roboto Black (900)
+      h1(style='font-weight: 300; font-style: italic') Roboto Light Italic (300)
+      h1(style='font-weight: 400; font-style: italic') Roboto Regular Italic (400)
+      h1(style='font-weight: 500; font-style: italic') Roboto Medium Italic (500)
+      h1(style='font-weight: 700; font-style: italic') Roboto Bold Italic (700)
+      h1(style='font-weight: 900; font-style: italic') Roboto Black Italic (900)
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    script(type='text/javascript')
+      :coffee-script
+        angular.module 'myApp', ['ngMaterial']

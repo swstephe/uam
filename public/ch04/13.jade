@@ -1,0 +1,123 @@
+doctype html
+html(lang='en')
+  head
+    title Icons
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='description',content='')
+    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic')
+    link(rel='stylesheet',href='https://fonts.googleapis.com/icon?family=Material+Icons')
+    style.
+      .material-icons.icon-call:before {
+        content: '\e0b0';
+      }
+      .material-icons.icon-call-missed:before {
+        content: '\e0b4';
+      }
+      .material-icons.icon-chat:before {
+        content: '\e0b7';
+      }
+      md-icon.size-18 {
+        font-size: 18px;
+        height: 18px;
+        width: 18px;
+      }
+
+      md-icon.size-24 {
+        font-size: 24px;
+        height: 24px;
+        width: 24px;
+      }
+
+      md-icon.size-36 {
+        font-size: 36px;
+        height: 36px;
+        width: 36px;
+      }
+
+      md-icon.size-48 {
+        font-size: 48px;
+        height: 48px;
+        width: 48px;
+      }
+
+      md-icon.red {
+        color: #F44336; /* Red 500 */
+      }
+
+      md-icon.green {
+        color: #4CAF50; /* Green 500 */
+      }
+
+      md-icon.blue {
+        color: #2196F3; /* Blue 500 */
+      }
+
+  body(ng-app='myApp',layout='column')
+    div(layout='column',layout-fill)
+      md-toolbar
+        .md-toolbar-tools Icons with fonts (class names)
+      md-content
+        div(layout='row',layout-padding)
+          div(flex=33)
+            | Call
+            br
+            md-icon.material-icons.icon-call
+          div(flex=33)
+            | Missed call
+            br
+            md-icon.material-icons.icon-call-missed
+          div(flex=33)
+            | Chat
+            br
+            md-icon.material-icons.icon-chat
+      md-toolbar
+        .md-toolbar-tools Icon sizes
+      md-content
+        div(layout='row',layout-padding)
+          div(flex=25)
+            | 18px
+            br
+            md-icon.material-icons.icon-call.size-18
+          div(flex=25)
+            | 24px
+            br
+            md-icon.material-icons.icon-call.size-24
+          div(flex=25)
+            | 36px
+            br
+            md-icon.material-icons.icon-call.size-36
+          div(flex=25)
+            | 48px
+            br
+            md-icon.material-icons.icon-call.size-48
+      md-toolbar
+        .md-toolbar-tools Icon colors
+      md-content
+        div(layout='row',layout-padding)
+          div(flex=25)
+            | Red
+            br
+            md-icon.material-icons.icon-chat.size-36.red
+          div(flex=25)
+            | Green
+            br
+            md-icon.material-icons.icon-chat.size-36.green
+          div(flex=25)
+            | Blue
+            br
+            md-icon.material-icons.icon-chat.size-36.blue
+          div(flex=25)
+            | Purple
+            br
+            md-icon.material-icons.icon-chat.size-36(style='color:purple')
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    script(type='text/javascript')
+      :coffee-script
+        angular
+        .module 'myApp', ['ngMaterial']

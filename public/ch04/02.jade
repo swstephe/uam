@@ -1,0 +1,38 @@
+doctype html
+html(lang='en')
+  head
+    title Heading styles
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='description',content='')
+    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic')
+    style.
+      div.flex-50 {
+        border: 1px dotted gray;
+      }
+      small {
+        background-color: #E0E0E0;  /* Grey 300 */
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+  body(ng-app='myApp',layout='column')
+    md-toolbar
+      .md-toolbar-tools Heading styles
+    md-content(layout='row',layout-padding,layout-wrap)
+      div(flex=50): h1.md-display-1 &lt;h1&gt; <small>md-display-1</small>
+      div(flex=50): h4.md-display-1 &lt;h4&gt; <small>md-display-1</small>
+      div(flex=50): h2.md-display-2 &lt;h2&gt; <small>md-display-2</small>
+      div(flex=50): h3.md-display-2 &lt;h3&gt; <small>md-display-2</small>
+      div(flex=50): h3.md-display-3 &lt;h3&gt; <small>md-display-3</small>
+      div(flex=50): h2.md-display-3 &lt;h2&gt; <small>md-display-3</small>
+      div(flex=50): h4.md-display-4 &lt;h4&gt; <small>md-display-4</small>
+      div(flex=50): h1.md-display-4 &lt;h1&gt; <small>md-display-4</small>
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    script(type='text/javascript')
+      :coffee-script
+        angular.module 'myApp', ['ngMaterial']
