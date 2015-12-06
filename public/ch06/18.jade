@@ -1,0 +1,130 @@
+doctype html
+html(lang='en')
+  head
+    title Autocomplete
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='description',content='')
+    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic')
+    link(rel='stylesheet',href='https://fonts.googleapis.com/icon?family=Material+Icons')
+    style.
+      .md-autocomplete-suggestions li {
+        border-bottom: 1px solid #ccc;
+        height: auto;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        white-space: normal;
+      }
+
+      .md-autocomplete-suggestions .list-title {
+        display: block;
+        line-height: 1.5;
+        font-size: 1.2em;
+      }
+
+      .md-autocomplete-suggestions .list-item {
+        display: block;
+        line-height: 1.5;
+      }
+
+      .md-drop-down {
+        background-color: #BBDEFB;  /* Blue 100 */
+      }
+  body(ng-app='myApp',layout='column',ng-controller='SimpleFormController')
+    md-toolbar.md-toolbar-tools
+      h1 Autocomplete
+    md-content
+      form(name='simple',novalidate,layout-margin)
+        md-autocomplete(
+          md-input-name='city'
+          md-item-text='city.name'
+          md-items='city in getMatchingCities(searchKey)'
+          md-search-text='searchKey'
+          md-selected-item='selectedCity'
+          placeholder="Type a city"
+          md-min-length=1
+          md-floating-label="Destination"
+          required
+          md-input-maxlength=20
+          md-select-on-match
+          md-menu-class='my-drop-down'
+          md-no-cache
+        )
+          md-item-template
+            span.list-title.md-body-2 {{city.name}}
+            span.list-item
+              md-icon-hotel hotel
+              | {{city.hotels}}&nbsp;&nbsp;
+              md-icon restaurant_menu
+              | {{city.restaurants}}
+          div(ng-messages='simple.city.$error')
+            div(ng-message='required') Please provide a city name
+            div(ng-message='maxlength') City name is too long
+          md-not-found No matching cities found for '{{searchKey}}'.
+      md-divider
+      div(layout-margin,layout-padding)
+        p
+          | Selected city:&#32;
+          code {{selectedCity}}
+        p
+          | Control value:&#32;
+          code {{simple.city.$modelValue}}
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    script(src='/angular-messages/angular-messages.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    script
+      :coffee-script
+        angular.module 'autocomplete', []
+        .controller 'SimpleFormController', [
+          '$scope'
+          '$q'
+          '$timeout'
+          ($scope, $q, $timeout) ->
+            cities = [
+              {name: "Budapest", hotels: 100, restaurants: 431}
+              {name: "Brussels", hotels: 100, restaurants: 431}
+              {name: "Prague", hotels: 100, restaurants: 431}
+              {name: "Bratislava", hotels: 100, restaurants: 431}
+              {name: "Warsaw", hotels: 100, restaurants: 431}
+              {name: "Berlin", hotels: 100, restaurants: 431}
+              {name: "Bucharest", hotels: 100, restaurants: 431}
+              {name: "Beograd", hotels: 100, restaurants: 431}
+              {name: "Ljubjana", hotels: 100, restaurants: 431}
+              {name: "Rome", hotels: 100, restaurants: 431}
+              {name: "Zurich", hotels: 100, restaurants: 431}
+              {name: "Amsterdam", hotels: 100, restaurants: 431}
+              {name: "Madrid", hotels: 100, restaurants: 431}
+              {name: "Paris", hotels: 100, restaurants: 431}
+              {name: "London", hotels: 100, restaurants: 431}
+              {name: "Luxemburg", hotels: 100, restaurants: 431}
+              {name: "Lisbon", hotels: 100, restaurants: 431}
+              {name: "Athens", hotels: 100, restaurants: 431}
+              {name: "La Valetta", hotels: 100, restaurants: 431}
+              {name: "Istanbul", hotels: 100, restaurants: 431}
+              {name: "Moscow", hotels: 100, restaurants: 431}
+              {name: "Oslo", hotels: 100, restaurants: 431}
+              {name: "Stockholm", hotels: 100, restaurants: 431}
+              {name: "Helsinki", hotels: 100, restaurants: 431}
+              {name: "Rejkjavik", hotels: 100, restaurants: 431}
+              {name: "Copenhagen", hotels: 100, restaurants: 431}
+            ]
+            $scope.cities = cities.sort (a,b) ->
+              if a.name > b.name then 1 else if a.name < b.name then -1 else 0
+
+            $scope.getMatchingCities = (searchKey) ->
+              deferred = $q.defer()
+              $timeout(->
+                result = $scope.cities
+                if searchKey
+                  result = $scope.cities.filter (item)->
+                    key = searchKey.toLowerCase()
+                    item.name.toLowerCase().indexOf(key) >= 0
+                deferred.resolve result
+              , 3000)
+              deferred.promise
+        ]
+        angular.module 'myApp', ['ngMaterial', 'ngMessages', 'autocomplete']

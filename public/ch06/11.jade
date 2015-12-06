@@ -1,0 +1,60 @@
+doctype html
+html(lang='en')
+  head
+    title Checkboxes
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='description',content='')
+    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic')
+    style.
+      small {
+        color: #757575; /* Grey 600 */
+        font-style: italic;
+      }
+  body(ng-app='myApp',layout='column')
+    // Single column
+    md-toolbar.md-toolbar-tools
+      h1 Dive gear checklist
+    md-content
+      div(layout='column',layout-margin,ng-init='gear={}')
+        md-checkbox(ng-model='gear.fins')
+          | Fins
+          small &nbsp;({{gear.fins}})
+        md-checkbox.md-primary(
+          ng-false-value="'no'"
+          ng-true-value="'yes'"
+          ng-model='gear.suit'
+        )
+          | Neoprene suit
+          small &nbsp;({{gear.suit}})
+        md-checkbox(
+          ng-model='gear.bcd'
+          ng-false-value='undefined'
+          ng-true-value="'taken'"
+        )
+          | BCD jacket
+          small &nbsp;({{gear.bcd}})
+        md-checkbox(ng-model='gear.regulator')
+          | Regulator
+          small &nbsp;({{gear.regulator}})
+        md-checkbox(
+          ng-disabled="!gear.regulator"
+          ng-model='gear.tank'
+        )
+          | Tank
+          small &nbsp;({{gear.tank}})
+        md-checkbox(ng-model='gear.weights')
+          | Weights
+          small &nbsp;({{gear.weights}})
+      md-divider
+      div(layout-margin)
+        code {{gear|json}}
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    script
+      :coffee-script
+        angular.module 'myApp', ['ngMaterial']

@@ -1,0 +1,77 @@
+doctype html
+html(lang='en')
+  head
+    title Switches
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='description',content='')
+    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic')
+    link(rel='stylesheet',href='https://fonts.googleapis.com/icon?family=Material+Icons')
+    style.
+      md-switch#nitrox {
+        margin-top: 36px;
+      }
+
+      small {
+        color: #757575; /* Grey 600 */
+        font-style: italic;
+      }
+
+      .explanation {
+        margin-top: 4px;
+      }
+
+      .explanation-text {
+        font-size: 0.9em;
+        color: #757575; /* Grey 600 */
+      }
+
+      .explanation-icon {
+        margin-right: 8px;
+        color: #2196F3; /* Blue 500 */
+      }
+  body(ng-app='myApp',layout='column')
+    // Single column
+    md-toolbar.md-toolbar-tools
+      h1 Dive computer settings
+    md-content
+      div(layout='column',layout-margin,ng-init='settings={}')
+        md-switch(
+          ng-false-value="'off'"
+          ng-true-value="'on'"
+          ng-model="settings.beep"
+        )
+          | Beep
+          small ({{settings.beep}})
+        md-switch(ng-model="settings.depth")
+          | Depth alaram
+          small ({{settings.depth}})
+        md-switch#nitrox.md-primary(
+          ng-false-value="'air'"
+          ng-true-value="'enriched air'"
+          ng-model="settings.nitrox"
+        )
+          | Nitrox mode
+          small ({{settings.nitrox}})
+          .explanation
+            md-icon.material-icons.explanation-icon comment
+            .explanation-text Do not forget to use the oxygen analyzer!
+        md-switch(
+          ng-false-value="'off'"
+          ng-true-value="'on'"
+          ng-model='settings.deepStop'
+        )
+          | Use Deep Stop
+          small ({{settings.deepStop}})
+      md-divider
+      div(layout-margin)
+        code {{settings|json}}
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    script
+      :coffee-script
+        angular.module 'myApp', ['ngMaterial']
