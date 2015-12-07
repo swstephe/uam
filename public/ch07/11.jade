@@ -1,0 +1,62 @@
+doctype html
+html(lang='en')
+  head
+    title Confirmation dialog
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='description',content='')
+    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic')
+    style.
+      .divecard {
+        padding: 8px 24px;
+        background-color: #0398E5;  /* Orange 800 */
+      }
+
+      .divecard h2 {
+        color: white;
+        font-weight: 500;
+        font-size: 1.75em;
+      }
+
+      .divecard h1, .divecard h3 {
+        font-weight: 200;
+        color: #ECEFF1; /* Grey 50 */
+      }
+
+      .divecard h1 {
+        font-size: 1.5em;
+        margin: 0;
+        margin-top: 16px;
+      }
+
+      .divecard h3 {
+        margin: 0;
+        font-size: 1.25em;
+      }
+  body(ng-app='myApp',layout='column',ng-controller='DialogController')
+    md-toolbar.md-toolbar-tools
+      h1 Confirmation dialog
+    md-content#sourcePanel
+      div(layout,layout-padding)
+        div(flex=66)
+          .divecard
+            h1 {{dive.site}}
+            h3: small {{dive.location}}
+            h2 {{dive.depth}} feet | {{dive.time}} min
+      div(layout,layout-padding)
+        md-button.md-raised.md-warn(ng-click='showConfirmation($event)')
+          | Delete
+      md-divider
+      .md-body-1(layout,layout-padding)
+        | &nbsp;{{deleteStatus}}
+      md-divider
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    script(src='11.js')
+    script
+      :coffee-script
+        angular.module 'myApp', ['ngMaterial', 'dialog']

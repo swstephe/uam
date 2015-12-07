@@ -1,0 +1,36 @@
+doctype html
+html(lang='en')
+  head
+    title Alert dialog
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='description',content='')
+    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic')
+  body(ng-app='myApp',layout='column',ng-controller='DialogController')
+    md-toolbar.md-toolbar-tools
+      h1 Alert dialog
+    md-content(layout,layout-padding)
+      md-button.md-raised.md-accent(ng-click='showAlert()') Show an alert
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    script
+      :coffee-script
+        angular.module 'dialog', []
+        .controller 'DialogController', [
+          '$scope'
+          '$mdDialog'
+          ($scope, $mdDialog) ->
+            $scope.showAlert = ->
+              dialog = $mdDialog.alert()
+              .title("Your battery level is low.")
+              .textContent("Now, your battery has a critically low capacity, 8%.")
+              .ariaLabel("Battery level is low")
+              .ok("OK")
+              $mdDialog.show(dialog)
+        ]
+
+        angular.module 'myApp', ['ngMaterial', 'dialog']
