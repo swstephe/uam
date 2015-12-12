@@ -1,0 +1,46 @@
+doctype html
+html(lang='en')
+  head
+    title Tooltip
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='description',content='')
+    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic')
+    link(rel='stylesheet',href='https://fonts.googleapis.com/icon?family=Material+Icons')
+    style.
+      .highlight {
+        color: #FFF176;  /* Yellow 300 */
+      }
+  body(ng-app='myApp',layout='column')
+    md-toolbar.md-toolbar-tools
+      h1 Tooltip
+    md-content(flex)
+      div(layout='row',style='margin-top:36px;')
+        md-button.md-fab.md-accent(
+          style='margin-left: 60px;'
+          aria-label="Print"
+        )
+          md-tooltip(md-autohide,md-direction='left') Print
+          md-icon print
+        md-button.md-primary.md-raised(area-label='Play')
+          md-icon play_arrow
+          | Play
+          md-tooltip(md-autohide,md-direction='top') Play video
+        md-button.md-fab.md-accent.md-mini(
+          style="margin-right: 80px;"
+          aria-label="Share"
+        )
+          md-tooltip(md-autohide,md-direction='right') Share
+          md-icon share
+        md-checkbox(aria-label="Night mode")
+          | Night mode
+          md-tooltip(md-autohide,md-direction='bottom') Use night mode
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    script(type='text/javascript')
+      :coffee-script
+        angular.module 'myApp', ['ngMaterial']

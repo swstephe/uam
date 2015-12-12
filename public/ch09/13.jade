@@ -10,40 +10,20 @@ html(lang='en')
     link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic')
     link(rel='stylesheet',href='https://fonts.googleapis.com/icon?family=Material+Icons')
     style.
-      .divecard {
-        margin: 16px;
-        padding: 8px 24px;
-        background-color: #039BE5;  /* Orange 800 */
+      md-content {
+        background-color: #EEEEEE;  /* Grey 200 */
       }
 
-      .divecard.longest {
-        background-color: #311B92;  /* Deep purple 900 */
+      md-card-content {
+        background-color: #BBDEFB;  /* Blue 100 */
       }
 
-      .divecard.deepest {
-        background-color: #6200EA;  /* Deep purple A700 */
+      md-card-content.longest {
+        background-color: #CE93D8;  /* Purple 200 */
       }
 
-      .divecard h2 {
-        color: white;
-        font-weight: 500;
-        font-size: 1.75em;
-      }
-
-      .divecard h1, .divecard h3 {
-        font-weight: 200;
-        color: #ECEFF1; /* Grey 50 */
-      }
-
-      .divecard h1 {
-        font-size: 1.5em;
-        margin: 0;
-        margin-top: 16px;
-      }
-
-      .divecard h3 {
-        margin: 0;
-        font-size: 1.25em;
+      md-card-content.deepest {
+        background-color: #4DB6AC;  /* Teal 300 */
       }
   body(ng-app='myApp',layout='column',ng-controller='DiveLogController')
     div(layout='column',latout-fill)
@@ -64,15 +44,15 @@ html(lang='en')
             ng-click="displayDeepest()"
             ng-class="showDeepest ? 'md-accent md-hue-1' : ''"
           ) Deepest
-      md-content(flex)
-        div(layout='row',layout-wrap)
-          div(flex=33,ng-repeat='dive in dives')
-            .divecard(ng-class='{longest: showLongest && longest === $index, deepest: showDeepest && deepest === $index}')
-              h1 {{dive.site}}
-              h3: small {{dive.location}}
-              h2 {{dive.depth}} feet | {{dive.time}} min
-      md-toolbar
-        .md-toolbar-tools Powered by Angular Material
+      md-content(layout='row',layout-wrap)
+        div(flex=33,ng-repeat='dive in dives')
+          md-card
+            md-card-content(
+              ng-class="{longest: showLongest && longest === $index, deepest: showDeepest && deepest === $index}"
+            )
+              h1 {{dive.depth}} feet | {{dive.time}} min
+              h2 {{dive.site}}
+              h3 {{dive.location}}
     script(src='/angular/angular.js')
     script(src='/angular-animate/angular-animate.js')
     script(src='/angular-aria/angular-aria.js')
@@ -117,12 +97,15 @@ html(lang='en')
             $scope.displayAll = ->
               $scope.showLongest = false
               $scope.showDeepest = false
+
             $scope.displayLongest = ->
               $scope.showLongest = true
               $scope.showDeepest = false
+
             $scope.displayDeepest = ->
               $scope.showLongest = false
               $scope.showDeepest = true
+
             $scope.displayAll()
             true
         ]
