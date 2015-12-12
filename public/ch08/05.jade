@@ -1,0 +1,41 @@
+doctype html
+html(lang='en')
+  head
+    title Lists
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='description',content='')
+    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic')
+  body(ng-app='myApp',layout='column',ng-controller='ListController')
+    md-toolbar.md-toolbar-tools
+      h1 My favorite dives
+    md-content
+      md-list
+        md-list-item(ng-repeat='item in checklist')
+          p {{item.name}}
+          md-checkbox.md-secondary(nb-model='item.packed')
+        md-divider
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    script
+      :coffee-script
+        angular.module 'list', []
+        .controller 'ListController', [
+          '$scope'
+          ($scope) ->
+            $scope.checklist = [
+              {name: "Fins", packed: false},
+              {name: "Mask", packed: false},
+              {name: "BCD jacket", packed: false},
+              {name: "Gloves", packed: false},
+              {name: "Tank", packed: false},
+              {name: "Weights", packed: false},
+              {name: "Knife", packed: false},
+            ]
+        ]
+
+        angular.module 'myApp', ['ngMaterial', 'list']

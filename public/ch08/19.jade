@@ -1,0 +1,110 @@
+doctype html
+html(lang='en')
+  head
+    title Virtual repeat
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='description',content='')
+    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic')
+    style.
+      .vertical-axis {
+        width: 72px;
+      }
+      .horizontal-axis {
+        height: 72px;
+      }
+      #corner {
+        background-color: #BDBDBD;
+      }
+      #horizontalRuler {
+        width: 672px;
+        background-color: #E0E0E0;
+      }
+      #verticalRuler {
+        height: 480px;
+        background-color: #E0E0E0;
+      }
+      #mainPanel {
+        width: 672px;
+        height: 480px;
+        background-color: #424242;
+        color: white;
+        font-size: 2em;
+      }
+      .horizontal-item {
+        border-right: 1px solid #9E9E9E;
+        box-sizing: border-box;
+        display: inline-block;
+        height: 72px;
+        padding-top: 16px;
+        text-align: center;
+        width: 56px;
+        cursor: pointer;
+      }
+      .vertical-item {
+        border-bottom: 1px solid #9E9E9E;
+        box-sizing: border-box;
+        display: inline-block;
+        width: 72px;
+        padding-top: 16px;
+        padding-left: 12px;
+        text-align: left;
+        height: 56px;
+        cursor: pointer;
+      }
+      .highlighted {
+        background-color: #2196F3; /* Blue 500 */
+        color: white;
+        border-right: none;
+        border-bottom: none;
+      }
+  body(ng-app='myApp',layout='column',ng-controller='VirtualRepeatController')
+    md-toolbar.md-toolbar-tools
+      h1 Virtual repeat
+    md-content
+      div(layout='row')
+        #corner.horizontal-axis.vertical-axis
+        md-virtual-repeat-container#horizontalRuler.horizontal-axis(
+          md-orient-horizontal
+        )
+          .horizontal-item(
+            md-virtual-repeat='item in axisObjects'
+            md-on-demand
+            ng-class='{highlighted: item === valueX}'
+            ng-click='selectX(item)'
+          ) {{item}}
+      div(layout='row')
+        md-virtual-repeat-container#verticalRuler.vertical-axis(
+          md-orient-vertical
+        )
+          .vertical-item(
+            md-virtual-repeat='item in axisObjects'
+            md-on-demand
+            ng-class='{highlighted: item === valueY}'
+            ng-click='selectY(item)'
+          ) {{item}}
+        #mainPanel(layout,layout-align='center center')
+          | Selected: ( {{valueX}}, {{valueY}} )
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    script
+      :coffee-script
+        angular.module 'virtualrepeat', []
+        .controller 'VirtualRepeatController', [
+          '$scope'
+          ($scope) ->
+            $scope.axisObjects =
+              getLength: -> 10000
+              getItemAtIndex: (i) -> i
+            $scope.valueX = 0
+            $scope.valueY = 0
+            $scope.selectX = (value) -> $scope.valueX = value
+            $scope.selectY = (value) -> $scope.valueY = value
+            true
+        ]
+
+        angular.module 'myApp', ['ngMaterial', 'virtualrepeat']

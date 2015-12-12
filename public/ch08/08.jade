@@ -1,0 +1,104 @@
+doctype html
+html(lang='en')
+  head
+    title Lists
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='description',content='')
+    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic')
+    link(rel='stylesheet',href='https://fonts.googleapis.com/icon?family=Material+Icons')
+    style.
+      .expanded {
+        color: #2196f3;   /* Blue 500 */
+      }
+  body(ng-app='myApp',layout='column',ng-controller='ListController')
+    md-toolbar.md-toolbar-tools
+      h1 Dive travel info
+    md-content
+      md-list(flex=33,flex-md=50,flex-sm,ng-repeat='item in travelInfo')
+        md-divider(ng-if='dividerBefore($index)')
+        md-list-item.md-list-item-text(
+          ng-class='{expanded: item.expanded}'
+          ng-click='expandOrCollapse(item)'
+        )
+          md-icon.material-icons(ng-class='{expanded: item.expanded}')
+            | {{item.icon}}
+          p {{item.title}}
+          md-icon.ms-secondary.material-icons
+            | {{item.expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}
+        div(ng-if='item.expanded')
+          md-list-item.md-2-line(ng-repeat='topic in item.topics')
+            .md-list-item-text.md-offset
+              h3 {{topic.toString()}}
+      md-divider
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    script
+      :coffee-script
+        angular.module 'list', []
+        .controller 'ListController', [
+          '$scope'
+          '$mdDialog'
+          ($scope, $mdDialog) ->
+            $scope.travelInfo = [{
+              title: "Travel"
+              icon: "airplanemode_active"
+              topics: [
+                "Cyprus"
+                "Egypt"
+                "Mauritius"
+              ]
+            },{
+              title: "Hotel"
+              icon: "local_hotel"
+              topics: [
+                "Dive bungalows"
+                "Tents"
+                "Hostels"
+                "Hotels"
+              ]
+            },{
+              title: "Car rental"
+              icon: "card_travel"
+              topics: [
+                "Small cars"
+                "Family cars"
+                "Vans"
+              ]
+            },{
+              title: "Dive sites"
+              icon: "library_books"
+              topics: [
+                "Shallow dives"
+                "Wreck dives"
+                "Night dives"
+                "Cave dives"
+              ]
+            }]
+
+            $scope.expandOrCollapse = (item) -> item.expanded = !item.expanded
+
+            $scope.dividerBefore = (index) ->
+              index > 0 and
+              $scope.travelInfo[index].expanded and
+              !$scope.travelInfo[index-1].expanded
+
+            $scope.dividerAfter = (index) ->
+              index < $scope.travelInfo.length - 1 and
+              $scope.travelInfo[index].exanded
+
+            $scope.displayTopic = (ev, item) ->
+              dialog = $mdDialog.alert()
+              .title "Topic info"
+              .textContent 'Information about "#{item}".'
+              .ariaLabel 'topic info'
+              .ok "OK"
+              .targetEvent ev
+              $mdDialog.show dialog
+        ]
+
+        angular.module 'myApp', ['ngMaterial', 'list']

@@ -1,0 +1,40 @@
+doctype html
+html(lang='en')
+  head
+    title Lists
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='description',content='')
+    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic')
+    link(rel='stylesheet',href='https://fonts.googleapis.com/icon?family=Material+Icons')
+  body(ng-app='myApp',layout='column',ng-controller='ListController')
+    md-toolbar.md-toolbar-tools
+      h1 Dive computes settings
+    md-content
+      md-list(flex=33,flex-md=50,flex-sm)
+        md-list-item(ng-repeat='setting in settings')
+          md-icon {{setting.icon}}
+          p {{setting.name}}
+          md-switch.md-secondary(ng-model='setting.enabled')
+      md-divider
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    script
+      :coffee-script
+        angular.module 'list', []
+        .controller 'ListController', [
+          '$scope'
+          ($scope) ->
+            $scope.settings = [
+              {name: "Beep",          icon: "speaker_phone"}
+              {name: "Deep alarm",    icon: "alarm"}
+              {name: "Nitrox",        icon: "airplay"}
+              {name: "Battery check", icon: "battery_alert"}
+            ]
+        ]
+
+        angular.module 'myApp', ['ngMaterial', 'list']
