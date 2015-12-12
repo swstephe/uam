@@ -1,0 +1,84 @@
+doctype html
+html(lang='en')
+  head
+    title Updating toast content
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='description',content='')
+    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic')
+  body(ng-app='myApp',layout='column',ng-controller='ToastController')
+    md-toolbar.md-toolbar-tools
+      h1 Updating toast content
+    md-content(layout-align='start center')
+      md-button.md-raised.md-primary(
+        ng-click='showToast()'
+        ng-disabled='toastVisible'
+      ) Show
+      md-button.md-raised.md-accent(
+        ng-click='dismissToast()'
+        ng-disabled='!toastVisible'
+      ) Dismiss
+      div(flex,layout-padding='')
+        label {{dismissAction}}
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    script
+      :coffee-script
+        angular.module 'toast', []
+        .controller 'ToastController', [
+          '$scope'
+          '$mdToast'
+          '$interval'
+          ($scope, $mdToast, $interval) ->
+            $scope.toastVisible = false
+            $scope.dismissAction = ''
+            $scope.mailsReceived = 0
+            actionName = "Got it!"
+
+            $scope.showToast = ->
+              $scope.toastVisible = true
+              $scope.dismissAction = ''
+              $scope.mailsReceived = 1
+              toast = $mdToast.simple()
+              .content "You have received a new mail! "
+              .position 'top right'
+              .action actionName
+              .hideDelay 5000
+
+              $mdToast.show toast
+              .then acceptShow, rejectShow
+
+              handler = $interval(
+                ->
+                  $scope.mailsReceived++
+                  $mdToast.updateContent \
+                    "You have #{$scope.mailsReceived} new emails!"
+                ,
+                800
+              )
+
+            $scope.dismissToast = -> $mdToast.cancel()
+            acceptShow = (response) ->
+              $scope.toastVisible = false
+              $scope.dismissAction = if response is 'ok'
+                  "#{actionName} (#{$scope.mailsReceived})"
+                else
+                  "Timeout"
+              closeInterval()
+
+            rejectShow = ->
+              $scope.toastVisible = false
+              $scope.dismissAction = "Dismiss button"
+              closeInterval()
+
+            closeInterval = ->
+              if handler
+                $interval.cancel handler
+                handler = undefined
+        ]
+
+        angular.module 'myApp', ['ngMaterial', 'toast']
