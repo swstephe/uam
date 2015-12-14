@@ -1,0 +1,182 @@
+doctype html
+html(lang='en')
+  head
+    title Dive Log
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='description',content='')
+    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic')
+    style.
+      md-content#main {
+        background-color: #E0E0E0;  /* Grey 300 */
+      }
+      md-card {
+        background-color: white;
+      }
+      md-card-footer {
+        background-color: #BBDEFB;  /* Blue 100 */
+      }
+      span.tag {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 4px;
+        background-color: #BDBDBD;  /* Grey 400 */
+        color: black;
+        font-variant: small-caps;
+        margin-right: 8px;
+      }
+  body(ng-app='myApp',layout='column',ng-controller='DiveLogController')
+    md-toolbar
+      .md-toolbar-tools Younderwater Dive Log
+    md-content(layout='row',flex)
+      md-sidenav.md-sidenav-left.md-whiteframe-z2(md-is-locked-open='true')
+        md-toolbar.md-toobar-tools
+          h1 Tags
+        md-content(layout-padding)
+          md-list
+            md-list-item(ng-repeat='tag in tags')
+              md-button.md-primary(
+                ng-class="tag.selected ? 'md-raised md-accent' : ''"
+                ng-click="toggleTag(tag)"
+              ) {{tag.name}}
+      md-content#main(flex, layout='column')
+        section(layout='row',layout-wrap)
+          div(
+            flex=25
+            flex-md=50
+            flex-sm=100
+            ng-repeat='dive in getFilteredDives()'
+          )
+            md-card
+              md-card-content
+                h1 {{dive.depth}} feet | {{dive.time}} min
+                h2 {{dive.site}}
+                h3 {{dive.location}}
+              md-card-footer
+                span.tag(ng-repeat='tag in dive.tags') {{tag.toString()}}
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    script
+      :coffee-script
+        angular.module 'divelog', []
+        .controller 'DiveLogController', [
+          '$scope'
+          ($scope) ->
+            dives = [{
+              site:       "Abu Gotta Ramada"
+              location:   "Hurghada, Egypt"
+              depth:      30
+              time:       82
+              tags:       ["shallow"]
+            },{
+              site: 'Small Giftun'
+              location: 'Hurghada, Egypt'
+              depth: 78
+              time: 54
+              tags: ["deep"]
+            },{
+              site: 'Fanous East'
+              location: 'Hurghada, Egypt'
+              depth: 38
+              time: 55
+              tags: ["shallow", "drift"]
+            },{
+              site: 'Umm Gamar'
+              location: 'Hurghada, Egypt'
+              depth: 102
+              time: 48
+              tags: ["deep", "wreck"]
+            },{
+              site: 'Paradise'
+              location: 'Sharm El Sheikh, Egypt'
+              depth: 34
+              time: 62
+              tags: ["shallow"]
+            },{
+              site: 'Near Garden'
+              location: 'Sharm El Sheikh, Egypt'
+              depth: 47
+              time: 43
+              tags: ["manta"]
+            },{
+              site: 'Far Garden'
+              location: 'Sharm El Sheikh, Egypt'
+              depth: 72
+              time: 48
+              tags: ["manta"]
+            },{
+              site: 'Shark & Yolanda Reef'
+              location: 'Ras Mohamed, Egypt'
+              depth: 49
+              time: 57
+              tags: ["drift", "wreck", "shark"]
+            },{
+              site: 'Dunraven'
+              location: 'Ras Mohamed, Egypt'
+              depth: 56
+              time: 49
+              tags: ["wreck"]
+            },{
+              site: 'Ponte Mahoon'
+              location: 'Maehbourg, Mauritius'
+              depth: 54
+              time: 38
+              tags: ["manta"]
+            },{
+              site: 'Shark Rock'
+              location: 'Coco Beach, Mauritius'
+              depth: 88
+              time: 32
+              tags: ["deep", "shark"]
+            },{
+              site: 'Urchin City'
+              location: 'Coco Beach, Mauritius'
+              depth: 39
+              time: 58
+              tags: ["shallow"]
+            },{
+              site: 'Molnar Cave'
+              location: 'Budapest, Hungary'
+              depth: 98
+              time: 62
+              tags: ["cave", "deep"]
+            },{
+              site: 'Ecsed Lake'
+              location: 'Ecsed, Hungary'
+              depth: 24
+              time: 102
+              tags: ["shallow", "lake"]
+            },{
+              site: 'Gyekenyes Lake'
+              location: 'Ecsed, Hungary'
+              depth: 31
+              time: 44
+              tags: ["shallow", "night", "lake"]
+            }]
+            $scope.dives = dives
+            tags = {}
+            for dive in dives
+              continue unless dive and angular.isArray(dive.tags)
+              for tag in dive.tags
+                if tags[tag] then tags[tag]++ else tags[tag] = 1
+            tagList = for tag of tags
+              name: tag
+              count: tags[tag]
+              selected: false
+            $scope.tags = tagList.sort (a,b) ->
+                return -1 if a.name < b.name
+                return 1 if a.name > b.name
+                0
+            $scope.toggleTag = (tag) -> tag.selected = not tag.selected
+            $scope.getFilteredDives = ->
+              filterTags = $scope.tags.filter (tag) -> tag.selected
+              filteredDives = $scope.dives.filter (dive) ->
+                filterTags.every (value) ->
+                  dive.tags.indexOf(value.name) >= 0
+        ]
+
+        angular.module 'myApp', ['ngMaterial', 'divelog']
