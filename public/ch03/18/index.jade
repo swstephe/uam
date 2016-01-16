@@ -1,0 +1,18 @@
+doctype html
+html(lang='en')
+  != partial('../_header')
+    link(rel='stylesheet',href='18.css')
+  body(ng-app='myApp',layout='column')
+    md-content(layout='column',flex)
+      div(layout='row',flex,layout-wrap)
+        div(flex=25) Cell #1
+        div(flex=25) Cell #2
+        div(flex=25) Cell #3
+        div(flex=25) Cell #4
+        div(flex=25) Cell #5
+        div(flex=25) Cell #6
+    md-toolbar.md-toolbar-tools Footer
+    != partial('../_scripts')
+    script(type='text/javascript')
+      :coffee-script
+        angular.module 'myApp', ['ngMaterial']

@@ -1,0 +1,69 @@
+doctype html
+html(lang='en')
+  != partial('../_header')
+    link(rel='stylesheet',href='21.css')
+  body(ng-app='myApp',layout='row',ng-controller='LayoutController')
+    // Single column
+    div(flex,layout='column',tabIndex=-1,role='main')
+      md-toolbar(layout='row')
+        h1 &nbsp;&nbsp;{{__layout.screen}}
+      md-content#content(ng-controller='CitiesController')
+        div(layout='row',layout-wrap,ng-class='__layout.paddingStyle')
+          div(ng-class="'flex-' + __layout.itemSize",ng-repeat='city in cities')
+            | {{city}}
+    != partial('../_scripts')
+    script(type='text/javascript')
+      :coffee-script
+        angular
+        .module 'layout', []
+        .controller 'LayoutController', [
+          '$mdMedia'
+          '$scope'
+          ($mdMedia, $scope) ->
+            self = @
+            $scope.$watch(->
+              if $mdMedia 'xs'
+                'xsmall'
+              else if $mdMedia 'sm'
+                'small'
+              else if $mdMedia 'md'
+                'medium'
+              else if $mdMedia 'lg'
+                'large'
+              else if $mdMedia 'xl'
+                'xlarge'
+              else
+                'unknown'
+            (size) ->
+              self.screenSize = size
+              $scope.__layout =
+                screen: size
+                paddingStyle: getPaddingStyle()
+                itemSize: getItemSize()
+            )
+            getPaddingStyle = ->
+              switch self.screenSize
+                when 'small' then 'smallPadding'
+                else 'normalPadding'
+            getItemSize = ->
+              switch self.screenSize
+                when 'small' then 50
+                when 'medium' then 33
+                else 25
+            true
+        ]
+        angular
+        .module 'cities', []
+        .controller 'CitiesController', [
+          '$scope'
+          ($scope) ->
+            $scope.cities = [
+              "Brussels"
+              "Budapest"
+              "Oslo"
+              "New York"
+              "Rome"
+              "Seattle"
+            ]
+        ]
+        angular.module 'myApp', ['ngMaterial','layout', 'cities']

@@ -179,11 +179,12 @@ html(lang='en')
                 document.querySelector('#parentPanel')
               )
               $mdBottomSheet.show(
-                templateUrl: 'bottom08.html'
+                templateUrl: 'bottom09.html'
                 controller: 'BottomSheetController'
                 parent: parentPanel
                 targetEvent: ev
-                locals: {dive: $scope.selectedDive}
+                locals:
+                  dive: $scope.selectedDive
                 bindToController: true
                 controllerAs: 'ctrl'
               )

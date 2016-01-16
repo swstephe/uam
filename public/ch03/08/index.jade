@@ -1,0 +1,20 @@
+doctype html
+html(lang='en')
+  != partial('../_header')
+    link(rel='stylesheet',href='08.css')
+  body(ng-app='myApp')
+    div(layout='row')
+      div(flex) Cell #1
+      div(flex) Cell #2
+      div(flex) Cell #3
+    div(layout)
+      div(flex) Cell #4
+      div(flex) Cell #5
+    div(layout='column')
+      div(flex) Cell #6
+      div(flex) Cell #7
+      div(flex) Cell #8
+    != partial('../_scripts')
+    script(type='text/javascript')
+      :coffee-script
+        angular.module 'myApp', ['ngMaterial']

@@ -1,0 +1,24 @@
+doctype html
+html(lang='en')
+  != partial('../header')
+    link(rel='stylesheet',href='10.css')
+  body(ng-app='myApp')
+    div(layout='row')
+      div(flex=33) 33%
+      div(flex) (67%)
+    div(layout='row',style='margin-top:24px;')
+      div(flex=66) 66%
+      div(flex) (9%)
+      div(flex=25) 25%
+    div(layout='column',style='margin-top:24px;')
+      div(flex=20) 20%
+      div(flex) (40%)
+      div(flex) (40%)
+    div(layout='column',style='height:200px; margin-top:24px;')
+      div(flex=20) 20%
+      div(flex) (40%)
+      div(flex) (40%)
+    != partial('../_scripts')
+    script(type='text/javascript')
+      :coffee-script
+        angular.module 'myApp', ['ngMaterial']

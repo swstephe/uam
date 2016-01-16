@@ -1,0 +1,52 @@
+doctype html
+html(lang='en')
+  != partial('../_header')
+    link(rel='stylesheet',href='20.css')
+  body(ng-app='myApp',layout='column',ng-controller='LayoutController as lc')
+    // Single column
+    div(flex,layout='column',tabIndex=-1,role='main')
+      md-toolbar(layout='row')
+        h1 &nbsp;&nbsp;{{lc.screenSize}}
+      md-content#content
+        div(layout='column')
+          div(flex) Always visible #1
+          div(flex,hide-gt-xs) Visible on xsmall #1
+          div(flex,hide-xs,hide-md,hide-lg,hide-xl) Visible on small #1
+          div(flex,hide-xs,hide-sm,hide-lg,hide-xl) Visible on medium #1
+          div(flex,hide-xs,hide-sm,hide-md,hide-xl) Visible on large #1
+          div(flex,hide-xs,hide-sm,hide-md,hide-lg) Visible on xlarge #1
+          div(flex,hide,show-xs) Visible on xsmall #2
+          div(flex,hide,show-sm) Visible on small #2
+          div(flex,hide,show-md) Visible on medium #2
+          div(flex,hide,show-lg) Visible on large #2
+          div(flex,hide,show-xl) Visible on xlarge #2
+          div(flex,hide) Always hidden
+          div(flex,hide,show) Always visible #2
+    != partial('../_scripts')
+    script(type='text/javascript')
+      :coffee-script
+        angular
+        .module 'layout', []
+        .controller 'LayoutController', [
+          '$mdMedia'
+          '$scope'
+          ($mdMedia, $scope) ->
+            self = @
+            $scope.$watch(->
+              if $mdMedia 'xs'
+                'xsmall'
+              else if $mdMedia 'sm'
+                'small'
+              else if $mdMedia 'md'
+                'medium'
+              else if $mdMedia 'lg'
+                'large'
+              else if $mdMedia 'xl'
+                'xlarge'
+              else
+                'unknown'
+            (size) -> self.screenSize = size
+            )
+            true
+        ]
+        angular.module 'myApp', ['ngMaterial','layout']

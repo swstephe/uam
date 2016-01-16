@@ -1,0 +1,28 @@
+doctype html
+html(lang='en')
+  != partial('../_header')
+    link(rel='stylesheet',href='14.css')
+  body(ng-app='myApp')
+    div(layout='row',layout-align='center center',style='height: 100px;')
+      div(flex=10) Cell #1
+      div(flex=10) Cell #2
+      div(flex=10) Cell #3
+    div(
+      layout='row'
+      layout-align='space-between start'
+      style='height: 100px; margin-top: 24px;'
+    )
+      div(flex=10) Cell #4
+      div(flex=10) Cell #5
+      div(flex=10) Cell #6
+    div(
+      layout='column'
+      layout-align='space-around end'
+      style='height: 400px; margin-top: 24px;')
+      div(flex=25) Cell #7
+      div(flex=25) Cell #8
+      div(flex=25) Cell #9
+    != partial('../_scripts')
+    script(type='text/javascript')
+      :coffee-script
+        angular.module 'myApp', ['ngMaterial']

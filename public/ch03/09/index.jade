@@ -1,0 +1,27 @@
+doctype html
+html(lang='en')
+  != partial('../_header')
+    link(rel='stylesheet',href='09.css')
+  body(ng-app='myApp')
+    div(layout='row')
+      div(flex) Cell #1
+      div(flex) Cell #2
+      div(flex,layout='row')
+        div(flex) Cell #3A
+        div(flex) Cell #3B
+    div(layout='row')
+      div(flex,layout='column')
+        div(flex) Cell #4A
+        div(flex) Cell #4B
+        div(flex) Cell #4C
+      div(flex) Cell #5
+    div(layout='column')
+      div(flex,layout='row')
+        div(flex) Cell #6A
+        div(flex) Cell #6B
+        div(flex) Cell #6C
+      div(flex) Cell #7
+    != partial('../_scripts')
+    script(type='text/javascript')
+      :coffee-script
+        angular.module 'myApp', ['ngMaterial']
