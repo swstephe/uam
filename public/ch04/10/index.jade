@@ -1,0 +1,36 @@
+extends ../layout
+
+block vars
+  - var title = "Themes"
+  - var style = '../icons/sprite-communication-black.css'
+
+block content
+  md-toolbar
+    .md-toolbar-tools Image files
+  md-content(layout='row',layout-padding)
+    div(flex=33)
+      | Call
+      div: img(src='../icons/ic_call_black_36dp.png')
+    div(flex=33)
+      | Missed call
+      div: img(src='../icons/ic_call_missed_black_36dp.png')
+    div(flex=33)
+      | Chat
+      div: img(src='../icons/ic_chat_black_36dp.png')
+  md-toolbar
+    .md-toolbar-tools Sprites
+  md-content(layout='row',layout-padding)
+    div(flex=33)
+      | Call
+      .icon-communication-black.icon-communication-black-ic_call_black_24dp
+    div(flex=33)
+      | Missed call
+      .icon-communication-black.icon-communication-black-ic_call_missed_black_24dp
+    div(flex=33)
+      | Chat
+      .icon-communication-black.icon-communication-black-ic_chat_black_24dp
+
+append scripts
+  script(type='text/javascript')
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial']

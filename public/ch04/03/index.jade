@@ -1,0 +1,23 @@
+extends ../layout
+
+block vars
+  - var title = "Title & body styles"
+  - var style = '03.css'
+
+block content
+  div(layout='column',layout-fill)
+    md-toolbar
+      .md-toolbar-tools Title and body styles
+    md-content(layout-padding)
+      div(flex): span.md-headline This is <em>md-headline</em>
+      div(flex): span.md-title This is <em>md-title</em>
+      div(flex): span.md-subhead It is written with <em>md-subhead</em>
+      div(flex): span.md-body-1 <em>md-body-1</em> looks like this text
+      div(flex): span.md-body-2 <em>md-body-2</em> is a bit stronger
+      div(flex): span.md-button Look, this is <em>md-button</em>!
+      div(flex): span.md-caption Use <em>md-caption</em> for figures and tables
+
+append scripts
+  script(type='text/javascript')
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial']

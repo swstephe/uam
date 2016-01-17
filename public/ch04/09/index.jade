@@ -1,0 +1,30 @@
+extends ../layout
+
+block vars
+  - var title = "Themes"
+
+block content
+  md-toolbar
+    .md-toolbar-tools Custom shades
+  md-content
+    div(layout-padding) Primary colors
+    div(layout='row')
+      div(flex=25): md-button.md-primary md-primary
+      div(flex=25): md-button.md-primary.md-hue-1 md-primary md-hue-1
+      div(flex=25): md-button.md-primary.md-hue-2 md-primary md-hue-2
+      div(flex=25): md-button.md-primary.md-hue-3 md-primary md-hue-3
+
+append scripts
+  script(type='text/javascript')
+    :coffee-script
+      angular
+      .module 'myApp', ['ngMaterial']
+      .config ($mdThemingProvider) ->
+        $mdThemingProvider
+        .theme 'default'
+        .primaryPalette 'indigo',
+          default: '400'
+          'hue-1': '200'
+          'hue-2': 'A100'
+          'hue-3': 'A400'
+        .dark()

@@ -1,0 +1,77 @@
+extends ../layout
+
+block vars
+  - var style = '16.css'
+  - var title = "Icons"
+
+block content
+  .svg-icons(layout='column',layout-fill)
+    md-toolbar
+      .md-toolbar-tools SVG icons (URL)
+    md-content
+      div(layout='row',layout-padding)
+        div(flex=33)
+          | Computer
+          br
+          md-icon(md-svg-src='../icons/ic_computer_24px.svg')
+        div(flex=33)
+          | Headset
+          br
+          md-icon(md-svg-src='../icons/ic_headset_24px.svg')
+        div(flex=33)
+          | Memory
+          br
+          md-icon(md-svg-src='../icons/ic_memory_24px.svg')
+    md-toolbar
+      .md-toolbar-tools Icon sizes
+    md-content
+      div(layout='row',layout-padding)
+        div(flex=25)
+          | 18px
+          br
+          md-icon.size-18(md-svg-src='../icons/ic_computer_24px.svg')
+        div(flex=25)
+          | 24px
+          br
+          md-icon.size-24(md-svg-src='../icons/ic_computer_24px.svg')
+        div(flex=25)
+          | 36px
+          br
+          md-icon.size-36(md-svg-src='../icons/ic_computer_24px.svg')
+        div(flex=25)
+          | 48px
+          br
+          md-icon.size-48(md-svg-src='../icons/ic_computer_24px.svg')
+    md-toolbar
+      .md-toolbar-tools Icon colors
+    md-content
+      div(layout='row',layout-padding)
+        div(flex=25)
+          | Red
+          br
+          md-icon.size-36.red(md-svg-src='../icons/ic_memory_24px.svg')
+        div(flex=25)
+          | Green
+          br
+          md-icon.size-36.green(md-svg-src='../icons/ic_memory_24px.svg')
+        div(flex=25)
+          | Blue
+          br
+          md-icon.size-36.blue(md-svg-src='../icons/ic_memory_24px.svg')
+        div(flex=25)
+          | Purple
+          br
+          md-icon.size-36(
+            md-svg-src='../icons/ic_memory_24px.svg'
+            style={'color': 'purple'}
+          )
+
+append scripts
+  script(type='text/javascript')
+    :coffee-script
+      angular
+      .module 'myApp', ['ngMaterial']
+      .config ($mdIconProvider) ->
+        $mdIconProvider.fontSet 'gi', 'glyphicon'
+        $mdIconProvider.fontSet 'md', 'material-icons'
+        $mdIconProvider.defaultFontSet 'glyphicon'

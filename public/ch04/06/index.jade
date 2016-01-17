@@ -1,0 +1,49 @@
+extends ../layout
+
+block vars
+  - var title = "Themes"
+
+block content
+  md-toolbar
+    .md-toolbar-tools Themes (default)
+  md-content
+    div(layout-padding) Default colors
+    div(layout='row')
+      div(flex=25): md-button (none)
+      div(flex=25): md-button.md-hue-1 md-hue-1
+      div(flex=25): md-button.md-hue-2 md-hue-2
+      div(flex=25): md-button.md-hue-3 md-hue-3
+    md-divider
+    div(layout-padding) Primary colors
+    div(layout='row')
+      div(flex=25): md-button.md-primary md-primary
+      div(flex=25): md-button.md-primary.md-hue-1 md-primary md-hue-1
+      div(flex=25): md-button.md-primary.md-hue-2 md-primary md-hue-2
+      div(flex=25): md-button.md-primary.md-hue-3 md-primary md-hue-3
+    md-divider
+    div(layout-padding) Accent colors
+    div(layout='row')
+      div(flex=25): md-button.md-accent md-accent
+      div(flex=25): md-button.md-accent.md-hue-1 md-accent md-hue-1
+      div(flex=25): md-button.md-accent.md-hue-2 md-accent md-hue-2
+      div(flex=25): md-button.md-accent.md-hue-3 md-accent md-hue-3
+    md-divider
+    div(layout-padding) Warm colors
+    div(layout='row')
+      div(flex=25): md-button.md-warn md-warn
+      div(flex=25): md-button.md-warn.md-hue-1 md-warn md-hue-1
+      div(flex=25): md-button.md-warn.md-hue-2 md-warn md-hue-2
+      div(flex=25): md-button.md-warn.md-hue-3 md-warn md-hue-3
+
+append scripts
+  script(type='text/javascript')
+    :coffee-script
+      angular
+      .module 'myApp', ['ngMaterial']
+      .config ($mdThemingProvider) ->
+        $mdThemingProvider
+        .theme 'default'
+        .dark()
+        .primaryPalette 'orange'
+        .accentPalette 'brown'
+        .warnPalette 'purple'

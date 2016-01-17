@@ -1,3 +1,4 @@
+*.swp
 public/angular-animate
 public/angular-aria
 public/angular-material

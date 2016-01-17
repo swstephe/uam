@@ -1,0 +1,69 @@
+extends ../layout
+
+block vars
+  - var style = '13.css'
+  - var title = "Icons"
+
+block content
+  div(layout='column',layout-fill)
+    md-toolbar
+      .md-toolbar-tools Icons with fonts (class names)
+    md-content
+      div(layout='row',layout-padding)
+        div(flex=33)
+          | Call
+          br
+          md-icon.material-icons.icon-call
+        div(flex=33)
+          | Missed call
+          br
+          md-icon.material-icons.icon-call-missed
+        div(flex=33)
+          | Chat
+          br
+          md-icon.material-icons.icon-chat
+    md-toolbar
+      .md-toolbar-tools Icon sizes
+    md-content
+      div(layout='row',layout-padding)
+        div(flex=25)
+          | 18px
+          br
+          md-icon.material-icons.icon-call.size-18
+        div(flex=25)
+          | 24px
+          br
+          md-icon.material-icons.icon-call.size-24
+        div(flex=25)
+          | 36px
+          br
+          md-icon.material-icons.icon-call.size-36
+        div(flex=25)
+          | 48px
+          br
+          md-icon.material-icons.icon-call.size-48
+    md-toolbar
+      .md-toolbar-tools Icon colors
+    md-content
+      div(layout='row',layout-padding)
+        div(flex=25)
+          | Red
+          br
+          md-icon.material-icons.icon-chat.size-36.red
+        div(flex=25)
+          | Green
+          br
+          md-icon.material-icons.icon-chat.size-36.green
+        div(flex=25)
+          | Blue
+          br
+          md-icon.material-icons.icon-chat.size-36.blue
+        div(flex=25)
+          | Purple
+          br
+          md-icon.material-icons.icon-chat.size-36(style='color:purple')
+
+append scripts
+  script(type='text/javascript')
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial']

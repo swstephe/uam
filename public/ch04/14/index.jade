@@ -1,0 +1,69 @@
+extends ../layout
+
+block vars
+  - var style = '14.css'
+  - var title = "Icons"
+
+block content
+  div(layout='column',layout-fill)
+    md-toolbar
+      .md-toolbar-tools Icons with custom font (GlyphIcons Halflings)
+    md-content
+      div(layout='row',layout-padding)
+        div(flex=33)
+          | Pencil
+          br
+          md-icon.glyphicon.pencil
+        div(flex=33)
+          | Glass
+          br
+          md-icon.glyphicon.glass
+        div(flex=33)
+          | Music
+          br
+          md-icon.glyphicon.music
+    md-toolbar
+      .md-toolbar-tools Icon sizes
+    md-content
+      div(layout='row',layout-padding)
+        div(flex=25)
+          | 18px
+          br
+          md-icon.glyphicon.pencil.size-18
+        div(flex=25)
+          | 24px
+          br
+          md-icon.glyphicon.pencil.size-24
+        div(flex=25)
+          | 36px
+          br
+          md-icon.glyphicon.pencil.size-36
+        div(flex=25)
+          | 48px
+          br
+          md-icon.glyphicon.pencil.size-48
+    md-toolbar
+      .md-toolbar-tools Icon colors
+    md-content
+      div(layout='row',layout-padding)
+        div(flex=25)
+          | Red
+          br
+          md-icon.glyphicon.glass.size-36.red
+        div(flex=25)
+          | Green
+          br
+          md-icon.glyphicon.glass.size-36.green
+        div(flex=25)
+          | Blue
+          br
+          md-icon.glyphicon.glass.size-36.blue
+        div(flex=25)
+          | Purple
+          br
+          md-icon.glyphicon.glass.size-36.red(style={'color':'purple'})
+
+append scripts
+  script(type='text/javascript')
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial']

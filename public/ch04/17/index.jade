@@ -1,0 +1,74 @@
+extends ../layout
+
+block vars
+  - var style = '17.css'
+  - var title = "Icons"
+
+block content
+  .svg-icons(layout='column',layout-fill)
+    md-toolbar
+      .md-toolbar-tools SVG icons (icon set)
+    md-content
+      div(layout='row',layout-padding)
+        div(flex=33)
+          | Jake
+          br
+          md-icon(md-svg-icon='my:jake')
+        div(flex=33)
+          | Headset
+          br
+          md-icon(md-svg-icon='my:george')
+        div(flex=33)
+          | Memory
+          br
+          md-icon(md-svg-icon='computer')
+    md-toolbar
+      .md-toolbar-tools Icon sizes
+    md-content
+      div(layout='row',layout-padding)
+        div(flex=25)
+          | 18px
+          br
+          md-icon.size-18(md-svg-icon='george')
+        div(flex=25)
+          | 24px
+          br
+          md-icon.size-24(md-svg-icon='my:george')
+        div(flex=25)
+          | 36px
+          br
+          md-icon.size-36(md-svg-icon='my:george')
+        div(flex=25)
+          | 48px
+          br
+          md-icon.size-48(md-svg-icon='my:george')
+    md-toolbar
+      .md-toolbar-tools Icon colors
+    md-content
+      div(layout='row',layout-padding)
+        div(flex=25)
+          | Red
+          br
+          md-icon.size-36.red(md-svg-icon='memory')
+        div(flex=25)
+          | Green
+          br
+          md-icon.size-36.green(md-svg-icon='memory')
+        div(flex=25)
+          | Blue
+          br
+          md-icon.size-36.blue(md-svg-icon='memory')
+        div(flex=25)
+          | Purple
+          br
+          md-icon.size-36(md-svg-icon='memory',style={'color':'purple'})
+
+append scripts
+  script(type='text/javascript')
+    :coffee-script
+      angular
+      .module 'myApp', ['ngMaterial']
+      .config ($mdIconProvider) ->
+        $mdIconProvider.iconSet 'my', '../icons/myIconSet.svg'
+        $mdIconProvider.icon 'computer', '../icons/ic_computer_24px.svg'
+        $mdIconProvider.defaultIconSet '../icons/myIconSet.svg', 24

@@ -1,0 +1,69 @@
+extends ../layout
+
+block vars
+  - var style = '11.css'
+  - var title = "Icons"
+
+block content
+  div(layout='column',layout-fill)
+    md-toolbar
+      .md-toolbar-tools Icons with fonts (ligatures)
+    md-content
+      div(layout='row',layout-padding)
+        div(flex=33)
+          | Call
+          br
+          md-icon call
+        div(flex=33)
+          | Missed call
+          br
+          md-icon call_missed
+        div(flex=33)
+          | Chat
+          br
+          md-icon chat
+    md-toolbar
+      .md-toolbar-tools Icon sizes
+    md-content
+      div(layout='row',layout-padding)
+        div(flex=25)
+          | 18px
+          br
+          md-icon.material-icons.size-18 call
+        div(flex=25)
+          | 24px
+          br
+          md-icon.material-icons.size-24 call
+        div(flex=25)
+          | 36px
+          br
+          md-icon.material-icons.size-36 call
+        div(flex=25)
+          | 48px
+          br
+          md-icon.material-icons.size-48 call
+    md-toolbar
+      .md-toolbar-tools Icon colors
+    md-content
+      div(layout='row',layout-padding)
+        div(flex=25)
+          | Red
+          br
+          md-icon.material-icons.size-36.red chat
+        div(flex=25)
+          | Green
+          br
+          md-icon.material-icons.size-36.green chat
+        div(flex=25)
+          | Blue
+          br
+          md-icon.material-icons.size-36.blue chat
+        div(flex=25)
+          | Purple
+          br
+          md-icon.material-icons.size-36(style={'color':'purple'}) chat
+
+append scripts
+  script(type='text/javascript')
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial']
