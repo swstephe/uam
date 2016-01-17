@@ -1,21 +1,20 @@
-doctype html
-html(lang='en')
-  != partial('../_header')
-    link(rel='stylesheet',href='03.css')
-  body(
-    ng-app='myApp'
-    layout='column'
-    ng-controller='LayoutController as lc'
-  )
-    md-toolbar(layout='row',hide-sm,show-gt-sm)
+extends ../layout
+
+block vars
+  - var body_attrs = {'ng-app':'myApp','layout':'column','ng-controller':'LayoutController as lc'}
+  - var script = 'script.js'
+  - var style = '03.css'
+
+block content
+    md-toolbar(layout='row' hide-sm show-gt-sm)
       h1 {{lc.title}}
-    md-toolbar(layout='row',show-sm,hide-gt-sm)
+    md-toolbar(layout='row' show-sm hide-gt-sm)
       h1 {{lc.title}}
     md-content#content
       h2 {{lc.sectionTitle}}
       | {{lc.sectionBody}}
-    != partial('../_scripts')
-    script(src='script.js')
+
+append scripts
     script
       :coffee-script
         angular.module 'myApp', ['ngMaterial','layout']

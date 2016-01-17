@@ -1,18 +1,17 @@
-doctype html
-html(lang='en')
-  != partial('../_header')
-  body(
-    ng-app='myApp'
-    layout='column'
-    ng-controller='LayoutController as lc'
-  )
-    md-toolbar
-      h1 {{lc.title}}
-    md-content
-      h2 {{lc.sectionTitle}}
-      | {{lc.sectionBody}}
-    != partial('../_scripts')
-    script(src='script.js')
-    script
-      :coffee-script
-        angular.module 'myApp', ['ngMaterial', 'layout']
+extends ../layout
+
+block vars
+  - var body_attrs = {'ng-app':'myApp','layout':'column','ng-controller':'LayoutController as lc'}
+  - var script = 'script.js'
+
+block content
+  md-toolbar
+    h1 {{lc.title}}
+  md-content
+    h2 {{lc.sectionTitle}}
+    | {{lc.sectionBody}}
+
+append scripts
+  script(type='text/javascript')
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'layout']

@@ -1,13 +1,16 @@
-doctype html
-html(lang='en')
-  != partial('../_header')
-    link(rel='stylesheet',href='16.css')
-  body(ng-app='myApp',layout='column')
-    div(layout='row',layout-margin,layout-padding,layout-fill)
-      div(flex) Cell #1
-      div(flex) Cell #2
-      div(flex) Cell #3
-    != partial('../_scripts')
-    script(type='text/javascript')
-      :coffee-script
-        angular.module 'myApp', ['ngMaterial']
+extends ../layout
+
+block vars
+  - var body_attrs = {'ng-app':'myApp','layout':'column'}
+  - var style = '16.css'
+
+block content
+  div(layout='row',layout-margin,layout-padding,layout-fill)
+    div(flex) Cell #1
+    div(flex) Cell #2
+    div(flex) Cell #3
+
+append scripts
+  script(type='text/javascript')
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial']
