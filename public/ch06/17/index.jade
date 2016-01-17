@@ -1,0 +1,52 @@
+extends ../layout
+
+block vars
+  - var body_attrs = {'ng-controller': 'SimpleFormController'}
+  - var messages = true
+  - var script = '17.js'
+  - var style = '17.css'
+  - var title = "Autocomplete"
+
+block content
+  md-toolbar.md-toolbar-tools
+    h1 Autocomplete
+  md-content
+    form(name='simple',novalidate,layout-margin)
+      md-autocomplete(
+        md-input-name='city'
+        md-item-text='city.name'
+        md-items='city in getMatchingCities(searchKey)'
+        md-search-text='searchKey'
+        md-selected-item='selectedCity'
+        placeholder="Type a city"
+        md-min-length=0
+        md-floating-label="Destination"
+        required
+        md-input-maxlength=20
+        md-select-on-match
+        md-menu-class='my-drop-down'
+      )
+        md-item-template
+          span.list-title.md-body-2 {{city.name}}
+          span.list-item
+            md-icon-hotel hotel
+            | {{city.hotels}}&nbsp;&nbsp;
+            md-icon restaurant_menu
+            | {{city.restaurants}}
+        div(ng-messages='simple.city.$error')
+          div(ng-message='required') Please provide a city name
+          div(ng-message='maxlength') City name is too long
+        md-not-found No matching cities found for '{{searchKey}}'.
+    md-divider
+    div(layout-margin,layout-padding)
+      p
+        | Selected city:&#32;
+        code {{selectedCity}}
+      p
+        | Control value:&#32;
+        code {{simple.city.$modelValue}}
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'ngMessages', 'autocomplete']

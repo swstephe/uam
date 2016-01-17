@@ -1,0 +1,47 @@
+extends ../layout
+
+block vars
+  - var body_attrs = {'ng-controller':'SimpleFormController'}
+  - var script = '07.js'
+  - var title = "Using select"
+
+block content
+  md-toolbar.md-toolbar-tools
+    h1 Select with async loading
+  md-content
+    form(name='simple',novalidate,layout-margin)
+      div(layout='column')
+        md-input-container
+          label Dive type
+          md-select(
+            name='diveType'
+            ng-model='dive.type'
+            ng-init='dive.type=0'
+            multiple
+          )
+            md-option(ng-repeat='type in diveTypes',ng-value='type.id')
+              | &nbsp;{{type.name}} ({{type.id}})
+        md-input-container
+          label Altitude
+          md-select(
+            name='altitudeType'
+            ng-model='dive.altitudeType'
+            md-on-open='initAltitudeTypes()'
+          )
+            md-optgroup(
+              ng-repeat='alt in altitudeTypes'
+              label='{{alt.category}}'
+            )
+              md-option(ng-repeat='type in alt.levels') {{type.toString()}}
+      md-button.md-raised.md-primary(
+        ng-click="register(dive)"
+        ng-disabled='simple.$invalid'
+      ) Register
+    md-divider
+    div(layout-margin)
+      code {{diveInfo|json}}
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'select']

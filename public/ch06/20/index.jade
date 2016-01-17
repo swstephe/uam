@@ -1,0 +1,33 @@
+extends ../layout
+
+block vars
+  - var messages = true
+  - var script = '20.js'
+  - var style = '20.css'
+  - var title = "Simple form"
+
+block content
+  md-toolbar.md-toolbar-tools
+    h1 $mdDateLocaleProvider
+  md-content
+    .md-body-1(layout-margin,layout-padding)
+      | In this example, dates use Esperanto locale.
+     md-datepicker(
+       name='diveDate'
+       ng-model='user.diveDate'
+       required
+     )
+     .validation-messages(
+       ng-messages='simple.diveDate.$error'
+       ng-show='simple.diveDate.$dirty'
+     )
+       div(ng-message='required') Please provide a date!
+    md-divider
+    div(layout-margin,layout-padding)
+      code {{user.diveDate | json}}
+
+append scripts
+  script(src='moment.js')
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'ngMessages', 'datepicker']

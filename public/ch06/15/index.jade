@@ -1,0 +1,42 @@
+extends ../layout
+
+block vars
+  - var body_attrs = {'ng-controller':'SimpleFormController'}
+  - var script = '15.js'
+  - var style = '15.css'
+  - var title = "Autocomplete"
+
+block content
+  // Single column
+  md-toolbar.md-toolbar-tools
+    h1 Autocomplete
+  md-content
+    form(name='simple',novalidate,layout-margin)
+      md-autocomplete(
+        md-input-name='city'
+        md-item-text='city.toString()'
+        md-items='city in getMatchingCities(searchKey)'
+        md-search-text='searchKey'
+        md-selected-item='selectedCity'
+        placeholder="Type a city"
+        md-min-length=0
+      )
+        md-item-template
+          span(
+            md-highlight-text='searchKey'
+            md-highlight-flags='i'
+          ) {{city.toString()}}
+        md-not-found No matching cities found for '{{searchKey}}'.
+    md-divider
+    div(layout-margin,layout-padding)
+      p
+        | Selected city:&#32;
+        code {{selectedCity}}
+      p
+        | Control value:&#32;
+        code {{simple.city.$modelValue}}
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'autocomplete']

@@ -1,0 +1,55 @@
+extends ../layout
+
+block vars
+  - var body_attrs = {'ng-controller':'SimpleFormController'}
+  - var messages = true
+  - var title = "Simple form"
+
+block content
+  md-toolbar.md-toolbar-tools
+    h1 Simple form
+  md-content
+    form(name='simple',novalidate,layout-margin)
+      div(layout='column')
+        md-input-container
+          label Name
+          input(
+            name='name'
+            ng-model='user.name'
+            required
+            md-maxlength=32
+          )
+          div(ng-messages='simple.name.$error',ng-show='simple.name.$dirty')
+            div(ng-message='required') Please provide a name!
+            div(ng-message='md-maxlength') This name is too long!
+        md-input-container
+          label Email
+          input(
+            type='email'
+            name='email'
+            ng-model='user.email'
+            required
+            md-maxlength=64
+          )
+          div(ng-messages='simple.email.$error',ng-show='simple.email.$dirty')
+            div(ng-message='required') Please provide an email!
+            div(ng-message='email') Type in a valid email address!
+      md-button.md-raised.md-primary(
+        ng-click="register(user)"
+        ng-disabled='simple.$invalid'
+      ) Register
+    md-divider
+    div(layout-margin)
+      code {{registeredUser|json}}
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'input', []
+      .controller 'SimpleFormController', [
+        '$scope'
+        ($scope) ->
+          $scope.registeredUser = {}
+          $scope.register = (user) -> $scope.registeredUser = user
+      ]
+      angular.module 'myApp', ['ngMaterial', 'ngMessages', 'input']
