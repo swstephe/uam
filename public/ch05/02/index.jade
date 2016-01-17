@@ -1,28 +1,22 @@
-doctype html
-html(lang='en')
-  head
-    title Header with Buttons
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible',content='IE=edge')
-    meta(name='description',content='')
-    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
-    link(rel='stylesheet',href='/angular-material/angular-material.css')
-    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic')
-  body(ng-app='myApp',layout='column',layout-fill)
-    md-toolbar.md-tall(md-scroll-shrink,md-shrink-speed-factor=0.2)
-      .md-toolbar-tools.md-toolbar-tools-bottom Night Dive Rules
-    md-content(flex,layout-margin,layout-padding)
-      div(style='height:2000px')
-        h1.md-display-2 Rule #1
-        h1.md-display-2 Rule #2
-        p ...
-        h1.md-display-2 Rule #123
-    md-toolbar.md-medium-tall.md-accent
-      .md-toolbar-tools Powered by Angular Material
-    script(src='/angular/angular.js')
-    script(src='/angular-animate/angular-animate.js')
-    script(src='/angular-aria/angular-aria.js')
-    script(src='/angular-material/angular-material.js')
-    script(type='text/javascript')
-      :coffee-script
-        angular.module 'myApp', ['ngMaterial']
+extends ../layout
+
+block vars
+  - var body_attrs = {'layout-fill': true}
+  - var title = "Header with Buttons"
+
+block content
+  md-toolbar.md-tall(md-scroll-shrink,md-shrink-speed-factor=0.2)
+    .md-toolbar-tools.md-toolbar-tools-bottom Night Dive Rules
+  md-content(flex,layout-margin,layout-padding)
+    div(style='height:2000px')
+      h1.md-display-2 Rule #1
+      h1.md-display-2 Rule #2
+      p ...
+      h1.md-display-2 Rule #123
+  md-toolbar.md-medium-tall.md-accent
+    .md-toolbar-tools Powered by Angular Material
+
+append scripts
+  script(type='text/javascript')
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial']

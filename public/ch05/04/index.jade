@@ -1,39 +1,33 @@
-doctype html
-html(lang='en')
-  head
-    title Header with Buttons
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible',content='IE=edge')
-    meta(name='description',content='')
-    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
-    link(rel='stylesheet',href='/angular-material/angular-material.css')
-    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic')
-  body(ng-app='myApp',layout='column',ng-controller='TabsController')
-    div(layout='column',layout-fill)
-      md-toolbar
-        .md-toolbar-tools My latest dive
-      md-content(flex)
-        md-tabs(md-border-bottom)
-          md-tab(label="Dive data",md-on-select="tabSelected('First tab')")
-          md-tab(label="Dive site",md-on-select="tabSelected('Second tab')")
-          md-tab(label="Photos",md-on-select="tabSelected('Third tab')")
-        div(flex,layout-padding)
-          p.md-display-2 {{activeTab}}
-    script(src='/angular/angular.js')
-    script(src='/angular-animate/angular-animate.js')
-    script(src='/angular-aria/angular-aria.js')
-    script(src='/angular-material/angular-material.js')
-    script(type='text/javascript')
-      :coffee-script
-        angular.module 'tabs', []
-        .controller 'TabsController', [
-          '$scope'
-          ($scope) ->
-            $scope.activeTab = ''
-            $scope.tabSelected = (tab) -> $scope.activeTab = tab
-        ]
-        angular.module 'myApp', ['ngMaterial', 'tabs']
-        .config ($mdThemingProvider) ->
-          $mdThemingProvider.theme 'default'
-          .primaryPalette 'blue'
-          .accentPalette 'orange'
+extends ../layout
+
+block vars
+  - var body_attrs = {'ng-controller': 'TabsController'}
+  - var title = "Header with Buttons"
+
+block content
+  div(layout='column',layout-fill)
+    md-toolbar
+      .md-toolbar-tools My latest dive
+    md-content(flex)
+      md-tabs(md-border-bottom)
+        md-tab(label="Dive data", md-on-select="tabSelected('First tab')")
+        md-tab(label="Dive site", md-on-select="tabSelected('Second tab')")
+        md-tab(label="Photos", md-on-select="tabSelected('Third tab')")
+      div(flex,layout-padding)
+        p.md-display-2 {{activeTab}}
+
+append scripts
+  script(type='text/javascript')
+    :coffee-script
+      angular.module 'tabs', []
+      .controller 'TabsController', [
+        '$scope'
+        ($scope) ->
+          $scope.activeTab = ''
+          $scope.tabSelected = (tab) -> $scope.activeTab = tab
+      ]
+      angular.module 'myApp', ['ngMaterial', 'tabs']
+      .config ($mdThemingProvider) ->
+        $mdThemingProvider.theme 'default'
+        .primaryPalette 'blue'
+        .accentPalette 'orange'

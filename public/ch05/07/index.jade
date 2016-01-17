@@ -1,44 +1,34 @@
-doctype html
-html(lang='en')
-  head
-    title Stretched tabs
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible',content='IE=edge')
-    meta(name='description',content='')
-    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
-    link(rel='stylesheet',href='/angular-material/angular-material.css')
-    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic')
-  body(ng-app='myApp',layout='column')
-    div(layout='column',layout-fill)
-      md-toolbar
-        .md-toolbar-tools My latest dive
-      md-content(flex)
-        md-tabs(md-border-bottom,md-align-tabs='bottom')
-          md-tab(label="Dive data")
-            md-content.md-padding
-              h1.md-display-1 Dive data
-              p.md-body-1.
-                This tab will show the dive information
-          md-tab(label="Dive site")
-            md-content.md-padding
-              h1.md-display-1 Dive site
-              p.md-body-1.
-                This tab will show the dive site description
-          md-tab(label="Photos")
-            md-content.md-padding
-              h1.md-display-1 Photos
-              p.md-body-1.
-                This tab will display the photos taken during the dive
-      md-toolbar.md-accent
-        .md-toolbar-tools Younderwater, 2015
-    script(src='/angular/angular.js')
-    script(src='/angular-animate/angular-animate.js')
-    script(src='/angular-aria/angular-aria.js')
-    script(src='/angular-material/angular-material.js')
-    script(type='text/javascript')
-      :coffee-script
-        angular.module 'myApp', ['ngMaterial']
-        .config ($mdThemingProvider) ->
-          $mdThemingProvider.theme 'default'
-          .primaryPalette 'blue'
-          .accentPalette 'orange'
+extends ../layout
+
+block vars
+  - var title = "Stretched tabs"
+
+block content
+  div(layout='column',layout-fill)
+    md-toolbar
+      .md-toolbar-tools My latest dive
+    md-content(flex)
+      md-tabs(md-border-bottom,md-align-tabs='bottom')
+        md-tab(label="Dive data")
+          md-content.md-padding
+            h1.md-display-1 Dive data
+            p.md-body-1 This tab will show the dive information
+        md-tab(label="Dive site")
+          md-content.md-padding
+            h1.md-display-1 Dive site
+            p.md-body-1 This tab will show the dive site description
+        md-tab(label="Photos")
+          md-content.md-padding
+            h1.md-display-1 Photos
+            p.md-body-1 This tab will display the photos taken during the dive
+    md-toolbar.md-accent
+      .md-toolbar-tools Younderwater, 2015
+
+append scripts
+  script(type='text/javascript')
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial']
+      .config ($mdThemingProvider) ->
+        $mdThemingProvider.theme 'default'
+        .primaryPalette 'blue'
+        .accentPalette 'orange'

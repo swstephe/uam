@@ -1,56 +1,27 @@
-doctype html
-html(lang='en')
-  head
-    title Dynamic tabs
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible',content='IE=edge')
-    meta(name='description',content='')
-    meta(name='viewport',content='initial-scale=1,maximum-scale=1,user-scalable=no')
-    link(rel='stylesheet',href='/angular-material/angular-material.css')
-    link(rel='stylesheet',href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic')
-  body(
-    ng-app='myApp'
-    layout='column'
-    layout-fill
-    ng-controller='DiveSitesController'
-  )
-    md-toolbar
-      .md-toolbar-tools My My favorite dive sites
-    md-content(flex)
-      md-tabs(md-border-bottom)
-        md-tab(ng-repeat='site in diveSites',label='{{site.toString()}}')
-          md-content.md-padding
-            h1.md-display-1 {{site.toString()}}
-            p.md-body-1.
-              This is a beatiful dive site!
-    md-toolbar.md-accent
-      .md-toolbar-tools Younderwater, 2015
-    script(src='/angular/angular.js')
-    script(src='/angular-animate/angular-animate.js')
-    script(src='/angular-aria/angular-aria.js')
-    script(src='/angular-material/angular-material.js')
-    script(type='text/javascript')
-      :coffee-script
-        angular.module 'divesites', []
-        .controller 'DiveSitesController', [
-          '$scope'
-          ($scope) ->
-            $scope.diveSites = [
-              "Small Giftun"
-              "Shaab El erg"
-              "Abu Ramada"
-              "Fanous North"
-              "Fanadir"
-              "Turtle Bay"
-              "Erg Somaya"
-              "Gotta Abu Ramada"
-              "Um Gamar"
-              "Bluff Point"
-            ]
-            true
-        ]
-        angular.module 'myApp', ['ngMaterial', 'divesites']
-        .config ($mdThemingProvider) ->
-          $mdThemingProvider.theme 'default'
-          .primaryPalette 'blue'
-          .accentPalette 'orange'
+extends ../layout
+
+block vars
+  - var body_attrs = {'layout-fill': true, 'ng-controller': 'DiveSitesController'}
+  - var script = '09.js'
+  - var title = "Dynamic tabs"
+
+block content
+  md-toolbar
+    .md-toolbar-tools My My favorite dive sites
+  md-content(flex)
+    md-tabs(md-border-bottom)
+      md-tab(ng-repeat='site in diveSites',label='{{site.toString()}}')
+        md-content.md-padding
+          h1.md-display-1 {{site.toString()}}
+          p.md-body-1 This is a beatiful dive site!
+  md-toolbar.md-accent
+    .md-toolbar-tools Younderwater, 2015
+
+append scripts
+  script(type='text/javascript')
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'divesites']
+      .config ($mdThemingProvider) ->
+        $mdThemingProvider.theme 'default'
+        .primaryPalette 'blue'
+        .accentPalette 'orange'
