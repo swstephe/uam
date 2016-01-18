@@ -1,0 +1,21 @@
+extends ../layout
+
+block vars
+  - var body_attrs = {'ng-controller':'ChipsController'}
+  - var script = '06.js'
+  - var title = "Chips with template"
+
+block content
+  md-toolbar.md-toolbar-tools
+    h1 Chips with item templates
+  md-content(layout-padding,layout-align='center center')
+    div(flex,layout='column')
+      md-chips(ng-model='fishList',md-on-append='newChip($chip)')
+        md-chip-template {{$chip.name}} (<em>{{$chip.size}}</em>)
+      div: code {{fishList | json}}
+    md-divider
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'chips']

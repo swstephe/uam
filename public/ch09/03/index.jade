@@ -1,0 +1,77 @@
+extends ../layout
+
+block vars
+  - var title = "Sliders"
+
+block content
+  md-toolbar.md-toolbar-tools(ng-init='enabled=true')
+    h1 Sliders
+    span(flex)
+    | Enabled
+    md-switch(ng-model='enabled')
+  md-content(flex)
+    .md-body-2(layout='row',layout-padding) Normal mode (values: 0-100)
+    div(layout,ng-init='slider1Value = 20')
+      div(flex=10,layout,layout-align='center center')
+        span.md-body-1 {{slider1Value}}
+      md-slider(
+        flex=80
+        ng-disabled='!enabled'
+        ng-model='slider1Value'
+      )
+    md-divider
+    .md-body-2(layout='row',layout-padding)
+      | Normal mode (values: 0-100, step 5)
+    div(layout,ng-init='slider2Value = 25')
+      div(flex=10,layout,layout-align='center center')
+        span.md-body-1 {{slider2Value}}
+      md-slider(
+        flex=80
+        step=5
+        ng-disabled='!enabled'
+        ng-model='slider2Value'
+      )
+    md-divider
+    .md-body-2(layout='row',layout-padding) Discrete mode (values: 1-10)
+    div(layout,ng-init='slider3Value = 2')
+      div(flex=10,layout,layout-align='center center')
+        span.md-body-1 {{slider3Value}}
+      md-slider(
+        flex=80
+        min=1
+        max=10
+        md-discrete
+        ng-disabled='!enabled'
+        ng-model='slider3Value'
+      )
+    md-divider
+    .md-body-2(layout='row',layout-padding)
+      | Discrete mode (values: 0-10, step: 2)
+    div(layout,ng-init='slider4Value = 2')
+      div(flex=10,layout,layout-align='center center')
+        span.md-body-1 {{slider4Value}}
+      md-slider(
+        flex=80
+        min=0
+        max=10
+        md-discrete
+        step=2
+        ng-disabled='!enabled'
+        ng-model='slider4Value'
+      )
+    md-divider
+    .md-body-2(layout='row',layout-padding) Normal mode with primary color
+    div(layout,ng-init='slider5Value = 33')
+      div(flex=10,layout,layout-align='center center')
+        span.md-body-1 {{slider5Value}}
+      md-slider.md-primary(
+        flex=80
+        ng-disabled='!enabled'
+        ng-model='slider5Value'
+      )
+    md-divider
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial']

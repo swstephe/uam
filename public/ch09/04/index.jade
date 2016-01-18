@@ -1,0 +1,34 @@
+extends ../layout
+
+block vars
+  - var body_attrs = {'ng-controller':'ChipsController'}
+  - var script = '04.js'
+  - var title = "Chips"
+
+block content
+  md-toolbar.md-toolbar-tools
+    h1 Chips
+  md-content
+    div(layout,layout-padding,layout-align='center center')
+      div(flex) Default chips
+      div(flex=75,layout='column')
+        md-chips(ng-model='fishList')
+        div: code {{fishList | json}}
+    md-divider
+    div(layout,layout-padding,layout-align='center center')
+      div(flex) Read-only chips
+      div(flex=75)
+        md-chips(ng-model='roFishList',readonly=true)
+    md-divider
+    div(layout,layout-padding,layout-align='center center')
+      div(flex) Static chips
+      div(flex=75)
+        md-chips
+          md-chip {{roFishList[0]}}
+          md-chip {{roFishList[2]}}
+    md-divider
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'chips']

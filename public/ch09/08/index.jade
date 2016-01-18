@@ -1,0 +1,26 @@
+extends ../layout
+
+block vars
+  - var body_attrs = {'ng-controller':'ToastController'}
+  - var script = '08.js'
+  - var title = "Simple toast"
+
+block content
+  md-toolbar.md-toolbar-tools
+    h1 Simple Toast
+  md-content(layout-align='start center')
+    md-button.md-raised.md-primary(
+      ng-click='showToast()'
+      ng-disabled='toastVisible'
+    ) Show
+    md-button.md-raised.md-accent(
+      ng-click='dismissToast()'
+      ng-disabled='!toastVisible'
+    ) Dismiss
+    div(flex,layout-padding='')
+      label {{dismissAction}}
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'toast']

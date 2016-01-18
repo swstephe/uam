@@ -1,0 +1,35 @@
+extends ../layout
+
+block vars
+  - var style = '16.css'
+  - var title = "Tooltip"
+
+block content
+  md-toolbar.md-toolbar-tools
+    h1 Tooltip
+  md-content(flex)
+    div(layout='row',style={'margin-top':'36px'})
+      md-button.md-fab.md-accent(
+        style={'margin-left': '60px'}
+        aria-label="Print"
+      )
+        md-tooltip(md-autohide,md-direction='left') Print
+        md-icon print
+      md-button.md-primary.md-raised(area-label='Play')
+        md-icon play_arrow
+        | Play
+        md-tooltip(md-autohide,md-direction='top') Play video
+      md-button.md-fab.md-accent.md-mini(
+        style={'margin-right': '80px'}
+        aria-label="Share"
+      )
+        md-tooltip(md-autohide,md-direction='right') Share
+        md-icon share
+      md-checkbox(aria-label="Night mode")
+        | Night mode
+        md-tooltip(md-autohide,md-direction='bottom') Use night mode
+
+append scripts
+  script(type='text/javascript')
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial']

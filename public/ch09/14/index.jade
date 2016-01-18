@@ -1,0 +1,29 @@
+extends ../layout
+
+block vars
+  - var body_attrs = {'ng-controller':'CardController'}
+  - var script = '14.js'
+  - var style = '14.css'
+  - var title = "Header with Buttons"
+
+block content
+  md-toolbar
+    .md-toolbar-tools
+      h2 Card
+  md-content(flex)
+    div(layout='row',layout-wrap)
+      div(flex=33,ng-repeat='card in diveCards')
+        md-card
+          img.md-card-image(
+            alt="{{card.title}}"
+            ng-src="../images/{{card.src}}"
+          )
+          md-card-content
+            h2 {{card.title}}
+            h3 {{card.site}}
+          md-card-footer {{card.taken}}
+
+append scripts
+  script(type='text/javascript')
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'card']

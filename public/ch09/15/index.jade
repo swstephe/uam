@@ -1,0 +1,40 @@
+extends ../layout
+
+block vars
+  - var body_attrs = {'ng-controller':'CardController'}
+  - var script = '15.js'
+  - var style = '15.css'
+  - var title = "Header with Buttons"
+
+block content
+  md-toolbar
+    .md-toolbar-tools
+      h2 Card
+  md-content(flex)
+    div(layout='row',layout-wrap)
+      div(flex=25,flex-md=50,flex-sm=100,ng-repeat='card in diveCards')
+        md-card(ng-click="doAction($event,'Show dive details')")
+          img.md-card-image(
+            alt="{{card.title}}"
+            ng-src="../images/{{card.src}}"
+          )
+          md-card-content
+            h2 {{card.title}}
+            h3 {{card.site}}
+            p {{card.taken}}
+          md-actions(
+            layout='row'
+            layout-align='start center'
+            style='padding-left: 8px;'
+          )
+            md-button.md-raised.md-primary(
+              ng-click="doAction($event, 'Log entry shared')"
+            ) Share
+            md-button.md-raised.md-primary(
+              ng-click="doAction($event, 'Log entry printed')"
+            ) Print
+
+append scripts
+  script(type='text/javascript')
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'card']

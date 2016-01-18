@@ -1,0 +1,40 @@
+extends ../layout
+
+block vars
+  - var body_attrs = {'ng-controller':'ProgressController'}
+  - var script = '02.js'
+  - var style = '02.css'
+  - var title = "Linear progress"
+
+block content
+  md-toolbar.md-toolbar-tools
+    h1 Linear progress
+    span(flex)
+    md-button(ng-click='start()',ng-if='!isStarted') Start
+    md-button(ng-click='stop()',ng-if='isStarted') Stop
+  md-content(flex)
+    .md-body-2(layout-padding) Indeterminate state
+    .progress-cell(flex)
+      md-progress-linear(md-mode='indeterminate')
+    md-divider
+    .md-body-2(layout='row',layout-padding) Determinate mode
+    .progress-cell(flex)
+      md-progress-linear(md-mode='determinate',value='{{currentValue}}')
+    md-divider
+    .md-body-2(layout='row',layout-padding) Query mode (accent color, hue-3)
+    .progress-cell(flex)
+      md-progress-linear.md-accent.md-hue-3(md-mode='query')
+    md-divider
+    .md-body-2(layout='row',layout-padding) Buffer mode (warn color)
+    .progress-cell(flex)
+      md-progress-linear.md-warn(
+        md-mode='buffer'
+        value='{{currentValue}}'
+        md-buffer-value='{{bufferValue}}'
+      )
+    md-divider
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'progress']

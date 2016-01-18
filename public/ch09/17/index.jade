@@ -1,0 +1,22 @@
+extends ../layout
+
+block vars
+  - var style = '17.css'
+  - var title = "Tooltip"
+
+block content
+  md-toolbar.md-toolbar-tools
+    h1 Tooltip
+  md-content(flex)
+    div(layout='row',style={'margin-top': '12px'})
+      md-switch(aria-label="Save mode")
+        | Battery save mode
+        md-tooltip(md-direction='bottom',md-delay=2000)
+          | Use&#32;
+          span.highlight battery save
+          | &#32;mode
+
+append scripts
+  script(type='text/javascript')
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial']
