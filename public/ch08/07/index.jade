@@ -1,0 +1,23 @@
+extends ../layout
+
+block vars
+  - var script = '07.js'
+
+block content
+  md-toolbar.md-toolbar-tools
+    h1 Dive gear checklist (secondary actions)
+  md-content
+    md-list(flex=33,flex-md=50,flex-sm)
+      md-list-item(ng-repeat='item in checklist')
+        md-checkbox(ng-model='item.packed')
+        p {{item.name}}
+        md-icon.md-secondary.material-icons(
+          aria-label='{{item.ariaLabel}}'
+          ng-click='explain($event, item.name)'
+        ) comment
+    md-divider
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'list']

@@ -1,0 +1,39 @@
+block vars
+doctype html
+html(lang='en')
+  head
+    title= title || "Using menus"
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='description',content='')
+    meta(
+      name='viewport'
+      content='initial-scale=1,maximum-scale=1,user-scalable=no'
+    )
+    link(rel='stylesheet',href='/angular-material/angular-material.css')
+    link(
+      rel='stylesheet'
+      href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic"
+    )
+    link(
+      rel='stylesheet'
+      href='//fonts.googleapis.com/icon?family=Material+Icons'
+    )
+    if style
+      link(rel='stylesheet',href=style)
+
+  body(
+    ng-app='myApp'
+    layout='column'
+    ng-controller=controller || 'MenuController'
+  )
+    block content
+    block scripts
+      script(src='/angular/angular.js')
+      script(src='/angular-animate/angular-animate.js')
+      if messages
+        script(src='/angular-messages/angular-messages.js')
+      script(src='/angular-aria/angular-aria.js')
+      script(src='/angular-material/angular-material.js')
+      if script
+        script(src=script)

@@ -1,0 +1,21 @@
+extends ../layout
+
+block vars
+  - var script = '01.js'
+
+block content
+  md-toolbar.md-toolbar-tools
+    h1 My favorite dives
+  md-content
+    md-list
+      md-list-item.md-3-line(ng-repeat='dive in dives')
+        .md-list-item-text
+          h3 {{dive.site}}
+          h4 {{dive.location}}
+          p {{dive.depth}} feet | {{dive.time}} min
+        md-divider
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'list']

@@ -1,0 +1,20 @@
+extends ../layout
+
+block vars
+  - var script = '06.js'
+
+block content
+  md-toolbar.md-toolbar-tools
+    h1 Dive computes settings
+  md-content
+    md-list(flex=33,flex-md=50,flex-sm)
+      md-list-item(ng-repeat='setting in settings')
+        md-icon {{setting.icon}}
+        p {{setting.name}}
+        md-switch.md-secondary(ng-model='setting.enabled')
+    md-divider
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'list']

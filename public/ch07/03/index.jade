@@ -1,0 +1,33 @@
+extends ../layout
+
+block vars
+  - var script = '03.js'
+
+block content
+  md-toolbar.md-toolbar-tools
+    h1 Using menus
+  md-content
+    md-menu
+      md-button.md-icon-button(ng-click='$mdOpenMenu($event)')
+        md-icon library_books
+      md-menu-content
+        md-menu-item
+          md-button(ng-click='handle($event)')
+            md-icon(md-menu-align-target) library_books
+            | &nbsp;Edit log entry
+        md-menu-item
+          md-button(ng-click='handle($event)')
+            md-icon delete
+            | &nbsp;Remove log entry
+        md-divider
+        md-menu-item
+          md-button(ng-click='handle($event)')
+            md-icon attachment
+            | &nbsp;Attach pictures
+    md-divider
+    .md-body-1(flex,layout-padding) Last action: {{lastAction}}
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'menu']

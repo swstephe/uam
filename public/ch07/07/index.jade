@@ -1,0 +1,33 @@
+extends ../layout
+
+block vars
+  - var script = '07.js'
+  - var title = "Catching the menu trigger"
+
+block content
+  md-toolbar.md-toolbar-tools
+    h1 Catching the menu trigger
+  md-content
+    md-menu(md-offset='-16 -12')
+      md-button(ng-click='openMenu($mdOpenMenu, $event)')
+        | Play dive profile
+        md-icon.md-menu-origin play_arrow
+      md-menu-content
+        md-menu-item: md-button(ng-click='handle($event)')
+          md-icon play_arrow
+          | &nbsp;From beginning
+        md-menu-item: md-button(ng-click='handle($event)')
+          md-icon keyboard_arrow_right
+          | &nbsp;From current time point
+        md-menu-item: md-button(ng-click='handle($event)')
+          md-icon keyboard_arrow_up
+          | &nbsp;Ascension phase
+    md-divider
+    .md-body-1(flex,layout-padding) Action Log
+    md-divider
+    .md-body-1(layout-padding,ng-repeat='item in actionLog') {{item.entry}}
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'menu']

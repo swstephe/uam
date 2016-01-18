@@ -1,0 +1,27 @@
+extends ../layout
+
+block vars
+  - var controller = 'DialogController'
+  - var script = '09.js'
+  - var title = "Alert dialog"
+
+block content
+  md-toolbar.md-toolbar-tools
+    h1 Alert dialog
+  md-content#sourcePanel
+    div(layout-padding,layout-margin)
+      md-button.md-raised.md-accent(ng-click='showAlert($event)')
+        | Show an alert
+      md-divider
+      div(ng-init='saver=true',layout='column',layout-margin)
+        md-switch(ng-model='saver') Battery saver
+        md-checkbox(style={'margin-left':'60px'},ng-disabled='!saver')
+          | Use it only when battery is low
+        md-checkbox(style={'margin-left':'60px'},ng-disabled='!saver')
+          | Allow to terminate passive apps
+    md-divider
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'dialog']

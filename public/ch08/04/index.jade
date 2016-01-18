@@ -1,0 +1,27 @@
+extends ../layout
+
+block vars
+  - var script = '04.js'
+
+block content
+  md-toolbar.md-toolbar-tools
+    h1 My favorite dives
+  md-content
+    md-list
+      div(ng-repeat='header in headers',ng-init='headerIndex=$index')
+        md-subheader {{header.toString()}}
+        md-list-item(
+          ng-repeat='dive in dives'
+          ng-class="headerIndex == 1? 'md-2-line' : 'md-3-line'"
+        )
+          img.md-avatar(ng-src='./images/{{dive.avatar}}',alt='{{dive.site}}')
+          .md-list-item-text
+            h3 {{dive.site}}
+            h4(ng-if='headerIndex != 1') {{dive.location}}
+            p {{dive.depth}} feet | {{dive.time}} min
+        md-divider
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'list']

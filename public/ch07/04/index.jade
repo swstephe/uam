@@ -1,0 +1,34 @@
+extends ../layout
+
+block vars
+  - var script = '04.js'
+
+block content
+    md-toolbar.md-toolbar-tools
+      h1 Using menus
+    md-content
+      md-menu(md-offset='-16 -13')
+        md-button(ng-click='$mdOpenMenu($event)')
+          | Play dive profile
+          md-icon.md-menu-origin play_arrow
+        md-menu-content
+          md-menu-item
+            md-button(ng-click='handle($event)')
+              md-icon play_arrow
+              | &nbsp;From beginning
+          md-menu-item
+            md-button(ng-click='handle($event)')
+              md-icon keyboard_arrow_right
+              | &nbsp;From current time point
+          md-divider
+          md-menu-item
+            md-button(ng-click='handle($event)')
+              md-icon keyboard_arrow_up
+              | &nbsp;Ascension phase
+      md-divider
+      .md-body-1(flex,layout-padding) Last action: {{lastAction}}
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'menu']

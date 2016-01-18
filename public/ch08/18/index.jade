@@ -1,0 +1,38 @@
+extends ../layout
+
+block vars
+  - var controller = 'VirtualRepeatController'
+  - var script = '18.js'
+  - var style = '18.css'
+  - var title = "Virtual repeat"
+
+block content
+  md-toolbar.md-toolbar-tools
+    h1= title
+  md-content
+    div(layout='row')
+      #corner.horizontal-axis.vertical-axis
+      md-virtual-repeat-container#horizontalRuler.horizontal-axis(
+        md-orient-horizontal
+      )
+        .horizontal-item(
+          md-virtual-repeat='item in axisItems'
+          ng-class='{highlighted: item === valueX}'
+          ng-click='selectX(item)'
+        ) {{item}}
+    div(layout='row')
+      md-virtual-repeat-container#verticalRuler.vertical-axis(
+        md-orient-vertical
+      )
+        .vertical-item(
+          ng-repeat='item in axisItems'
+          ng-class='{highlighted: item === valueY}'
+          ng-click='selectY(item)'
+        ) {{item}}
+      #mainPanel(layout,layout-align='center center')
+        | Selected: ( {{valueX}}, {{valueY}} )
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'virtualrepeat']

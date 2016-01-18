@@ -1,0 +1,41 @@
+extends ../layout
+
+block vars
+  - var script = '06.js'
+  - var title = "Specifying menu width"
+
+block content
+  md-toolbar.md-toolbar-tools
+    h1 Specifying menu width
+  md-content
+    div(layout='row',layout-padding,layout-align='start center')
+      | Width:
+      md-radio-group(
+        ng-model='menuWidth'
+        layout='row'
+        ng-init='menuWidth=2'
+      )
+        md-radio-button(ng-value=2) 2
+        md-radio-button(ng-value=3) 3
+        md-radio-button(ng-value=4) 4
+        md-radio-button(ng-value=5) 5
+        md-radio-button(ng-value=6) 6
+        md-radio-button(ng-value=7) 7
+    md-menu
+      md-button(
+        md-position-mode='target-right target'
+        ng-click='$mdOpenMenu($event)'
+      )
+        | Play profile
+        md-icon.md-menu-origin play_arrow
+      md-menu-content(width='{{menuWidth}}')
+        md-menu-item: md-button(ng-click='handle($event)') Mode #1
+        md-menu-item: md-button(ng-click='handle($event)') Mode #2
+        md-menu-item: md-button(ng-click='handle($event)') Mode #3
+    md-divider
+    .md-body-1(flex,layout-padding) Last action: {{lastAction}}
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'menu']

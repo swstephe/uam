@@ -1,0 +1,31 @@
+extends ../layout
+
+block vars
+  - var script = '08.js'
+  - var style = '08.css'
+
+block content
+  md-toolbar.md-toolbar-tools
+    h1 Dive travel info
+  md-content
+    md-list(flex=33,flex-md=50,flex-sm,ng-repeat='item in travelInfo')
+      md-divider(ng-if='dividerBefore($index)')
+      md-list-item.md-list-item-text(
+        ng-class='{expanded: item.expanded}'
+        ng-click='expandOrCollapse(item)'
+      )
+        md-icon.material-icons(ng-class='{expanded: item.expanded}')
+          | {{item.icon}}
+        p {{item.title}}
+        md-icon.ms-secondary.material-icons
+          | {{item.expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}
+      div(ng-if='item.expanded')
+        md-list-item.md-2-line(ng-repeat='topic in item.topics')
+          .md-list-item-text.md-offset
+            h3 {{topic.toString()}}
+    md-divider
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'list']

@@ -1,0 +1,29 @@
+extends ../layout
+
+block vars
+  - var controller = 'DialogController'
+  - var script = '10.js'
+  - var style = '10.css'
+  - var title = "Confirmation dialog"
+
+block content
+  md-toolbar.md-toolbar-tools
+    h1 Confirmation dialog
+  md-content#sourcePanel
+    div(layout,layout-padding)
+      div(flex=66)
+        .divecard
+          h1 {{dive.site}}
+          h3: small {{dive.location}}
+          h2 {{dive.depth}} feet | {{dive.time}} min
+    div(layout,layout-padding)
+      md-button.md-raised.md-accent(ng-click='showConfirmation($event)')
+        | Delete
+      md-divider
+      .md-body-1(layout,layout-padding) &nbsp;{{deleteStatus}}
+    md-divider
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'dialog']
