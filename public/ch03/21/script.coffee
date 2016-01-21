@@ -1,5 +1,4 @@
-angular
-.module 'layout', []
+angular.module 'layout', []
 .controller 'LayoutController', [
   '$mdMedia'
   '$scope'
@@ -30,8 +29,7 @@ angular
         else 25
     true
 ]
-angular
-.module 'cities', []
+angular.module 'cities', []
 .controller 'CitiesController', [
   '$scope'
   ($scope) ->
@@ -44,3 +42,4 @@ angular
       "Seattle"
     ]
 ]
+angular.module 'myApp', ['ngMaterial','layout', 'cities']

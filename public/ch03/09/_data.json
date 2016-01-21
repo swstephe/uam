@@ -1,0 +1,9 @@
+{
+    "index": {
+        "body": {
+            "ng-app": "myApp"
+        },
+        "script": true,
+        "style": true
+    }
+}

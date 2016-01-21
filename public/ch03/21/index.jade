@@ -1,11 +1,5 @@
 extends ../layout
 
-block vars
-  - var body_attrs = {'ng-app':'myApp','layout':'row','ng-controller':'LayoutController'}
-  - var style = '21.css'
-  - var script = '21.js'
-
-
 block content
   div(flex,layout='column',tabIndex=-1,role='main')
     md-toolbar(layout='row')
@@ -14,8 +8,3 @@ block content
       div(layout='row',layout-wrap,ng-class='__layout.paddingStyle')
         div(ng-class="'flex-' + __layout.itemSize",ng-repeat='city in cities')
           | {{city}}
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial','layout', 'cities']

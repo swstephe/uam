@@ -1,9 +1,5 @@
 extends ../layout
 
-block vars
-  - var body_attrs = {'ng-app':'myApp','layout':'column'}
-  - var style = '19.css'
-
 block content
   md-content(layout='column',flex)
     div(flex)
@@ -15,8 +11,3 @@ block content
         div(flex=25) Cell #5
         div(flex=25) Cell #6
   md-toolbar.md-toolbar-tools Footer
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial']

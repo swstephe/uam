@@ -1,9 +1,5 @@
 extends ../layout
 
-block vars
-  - var body_attrs = {'ng-app':'myApp'}
-  - var style = '12.css'
-
 block content
   div(layout='row')
     div(flex,flex-offset=20) #1 --> 20%
@@ -13,8 +9,3 @@ block content
   div(layout='row', style={'margin-top': '24px'})
     div(flex=25,flex-offset=25) #4 --> 25% (25%)
     div(flex=50,flex-offset=10) #5 --> 10% (50%)
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial']

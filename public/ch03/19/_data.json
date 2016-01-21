@@ -1,0 +1,10 @@
+{
+    "index": {
+        "body": {
+            "ng-app": "myApp",
+            "layout": "column"
+        },
+        "script": true,
+        "style": true
+    }
+}

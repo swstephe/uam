@@ -1,0 +1,10 @@
+{
+    "index": {
+        "body": {
+            "ng-app": "myApp",
+            "layout": "row"
+        },
+        "script": true,
+        "title": "Whiteframes"
+    }
+}

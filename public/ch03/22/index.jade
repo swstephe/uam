@@ -1,15 +1,11 @@
 extends ../layout
 
-block vars
-  - var title = "Whiteframes"
-  - var body_attrs = {'ng-app':'myApp','layout':'row'}
-
 block content
   div(flex,layout='column')
     md-toolbar.md-toolbar-tools
       h1 Whiteframes and dividers
     md-content(flex,style={'background-color':'#e0e0e0'})
-      div(style={'background-color':'white'},layout-margin)
+      div(style={'background-color': 'white'}, layout-margin)
         .md-whiteframe-z2(layout-padding)
           h1.md-display-1 md-whiteframe-z2
         section
@@ -26,8 +22,3 @@ block content
           .md-body-1(layout-padding) Topic #3
           md-divider
           .md-body-1(layout-padding) Topic #4
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial']

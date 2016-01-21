@@ -16,3 +16,4 @@ angular
     , (size) -> self.screenSize = size
     true
 ]
+angular.module 'myApp', ['ngMaterial', 'layout']

@@ -1,0 +1,11 @@
+{
+    "index": {
+        "body": {
+            "ng-app": "myApp",
+            "layout": "column",
+            "ng-controller": "LayoutController as lc"
+        },
+        "script": true,
+        "style": true
+    }
+}

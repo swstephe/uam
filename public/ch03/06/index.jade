@@ -1,15 +1,6 @@
 extends ../layout
 
-block vars
-  - var body_attrs = {'ng-app':'myApp','layout':'column'}
-  - var script = 'script.js'
-
 block content
   md-toolbar: h1 Header row
   md-content: h2 Content section
   md-toolbar: h1 Footer row
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial']

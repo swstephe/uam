@@ -1,10 +1,5 @@
 extends ../layout
 
-block vars
-  - var body_attrs = {'ng-app':'myApp','layout':'column','ng-controller':'LayoutController as lc'}
-  - var script = '20.js'
-  - var style = '20.css'
-
 block content
   div(flex,layout='column',tabIndex=-1,role='main')
     md-toolbar(layout='row')
@@ -24,8 +19,3 @@ block content
         div(flex,hide,show-xl) Visible on xlarge #2
         div(flex,hide) Always hidden
         div(flex,hide,show) Always visible #2
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial','layout']

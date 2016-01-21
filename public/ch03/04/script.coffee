@@ -14,3 +14,4 @@ angular
     )
     true
 ]
+angular.module 'myApp', ['ngMaterial','layout']

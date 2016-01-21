@@ -1,9 +1,5 @@
 extends ../layout
 
-block vars
-  - var body_attrs = {'ng-app':'myApp'}
-  - var style = '14.css'
-
 block content
   div(layout='row',layout-align='center center',style={'height': '100px'})
     div(flex=10) Cell #1
@@ -24,8 +20,3 @@ block content
     div(flex=25) Cell #7
     div(flex=25) Cell #8
     div(flex=25) Cell #9
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial']
