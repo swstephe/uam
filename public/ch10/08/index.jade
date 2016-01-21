@@ -1,0 +1,39 @@
+extends ../layout
+
+block vars
+  - var script = '08.js'
+  - var style = '08.css'
+
+block content
+  md-toolbar
+    .md-toolbar-tools Younderwater Dive Log
+  md-content(layout='row',flex)
+    md-content(layout='column', flex=33)
+      md-list
+        md-list-item.md-3-line(
+          ng-repeat='dive in dives'
+          ng-click='setDive(dive)'
+          ng-class="{'selected': dive == selectedDive}"
+        )
+          .md-list-item-text
+            h3 {{dive.site}}
+            h4 {{dive.location}}
+            p {{dive.depth}} feet | {{dive.time}} min
+            md-divider
+    md-content#parentPanel(flex)
+      md-card.card(ng-click='showBottomSheet($event)')
+        img.md-card-image(
+          alt='{{selectedDive.site}}'
+          ng-src='../images/{{selectedDive.image}}'
+        )
+        md-card-content
+          h1 {{selectedDive.depth}} feet | {{selectedDive.time}} min
+          h2 {{selectedDive.site}}
+          h3 {{selectedDive.location}}
+        md-card-footer
+          span.tag(ng-repeat='tag in dive.tags') {{tag.toString()}}
+
+append scripts
+  script
+    :coffee-script
+      angular.module 'myApp', ['ngMaterial', 'divelog']
