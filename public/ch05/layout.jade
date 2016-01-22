@@ -24,10 +24,9 @@ html(lang='en')
 
   body(ng-app='myApp',layout='column')&attributes(body||{})
     block content
-    block scripts
-      script(src='/angular/angular.js')
-      script(src='/angular-animate/angular-animate.js')
-      script(src='/angular-aria/angular-aria.js')
-      script(src='/angular-material/angular-material.js')
-      if script
-        script(type='text/javascript',src='script.js')
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    if script
+      script(type='text/javascript',src='script.js')
