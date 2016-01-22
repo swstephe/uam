@@ -1,8 +1,5 @@
 extends ../layout
 
-block vars
-  - var script = '06.js'
-
 block content
   md-toolbar.md-toolbar-tools
     h1 Dive computes settings
@@ -13,8 +10,3 @@ block content
         p {{setting.name}}
         md-switch.md-secondary(ng-model='setting.enabled')
     md-divider
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'list']

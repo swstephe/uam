@@ -1,8 +1,5 @@
 extends ../layout
 
-block vars
-  - var script = '05.js'
-
 block content
   md-toolbar.md-toolbar-tools
     h1 My favorite dives
@@ -12,8 +9,3 @@ block content
         p {{item.name}}
         md-checkbox.md-secondary(nb-model='item.packed')
       md-divider
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'list']

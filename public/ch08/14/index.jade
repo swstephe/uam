@@ -1,11 +1,5 @@
 extends ../layout
 
-block vars
-  - var controller = 'GridListController'
-  - var script = '14.js'
-  - var style = '14.css'
-  - var title = "Grid list"
-
 block content
   md-toolbar.md-toolbar-tools
     h1 Grid list
@@ -20,8 +14,3 @@ block content
         md-rowspan-sm=1
         md-colspan-sm=1
       ) {{item.name}}
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'gridlist']

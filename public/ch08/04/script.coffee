@@ -21,3 +21,4 @@ angular.module 'list', []
       "Longest dives"
     ]
 ]
+angular.module 'myApp', ['ngMaterial', 'list']

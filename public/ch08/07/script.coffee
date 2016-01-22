@@ -21,3 +21,4 @@ angular.module 'list', []
       .targetEvent ev
       $mdDialog.show dialog
 ]
+angular.module 'myApp', ['ngMaterial', 'list']

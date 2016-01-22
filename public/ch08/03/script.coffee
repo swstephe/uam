@@ -38,3 +38,4 @@ angular.module 'list', []
       avatar: 'turtle2.jpg'
     }]
 ]
+angular.module 'myApp', ['ngMaterial', 'list']

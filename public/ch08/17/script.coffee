@@ -24,4 +24,6 @@ angular.module 'gridlist', []
       {name: "Blue grey",   color: "#607D8B",   light: true}
       {name: "Black",       color: "#000000",   light: true}
     ]
+    $scope.onLayout = (ev) -> console.log ev
 ]
+angular.module 'myApp', ['ngMaterial', 'gridlist']

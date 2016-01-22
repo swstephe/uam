@@ -1,8 +1,5 @@
 extends ../layout
 
-block vars
-  - var script = '03.js'
-
 block content
   md-toolbar.md-toolbar-tools
     h1 My favorite dives
@@ -19,8 +16,3 @@ block content
           h4 {{dive.location}}
           p {{dive.depth}} feet | {{dive.time}} min
         md-divider
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'list']

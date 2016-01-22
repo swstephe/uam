@@ -24,5 +24,7 @@ angular.module 'gridlist', []
       {name: "Blue grey",   color: "#607D8B",   light: true}
       {name: "Black",       color: "#000000",   light: true}
     ]
-    $scope.onLayout = (ev) -> console.log ev
+    $scope.calcColspan = (index) -> if index%3 == 0 then 2 else 1
+    $scope.calcRowspan = (index) -> if index%5 == 0 then 2 else 1
 ]
+angular.module 'myApp', ['ngMaterial', 'gridlist']

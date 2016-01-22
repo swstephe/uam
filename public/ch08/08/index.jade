@@ -1,9 +1,5 @@
 extends ../layout
 
-block vars
-  - var script = '08.js'
-  - var style = '08.css'
-
 block content
   md-toolbar.md-toolbar-tools
     h1 Dive travel info
@@ -24,8 +20,3 @@ block content
           .md-list-item-text.md-offset
             h3 {{topic.toString()}}
     md-divider
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'list']

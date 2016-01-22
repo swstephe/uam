@@ -12,3 +12,4 @@ angular.module 'list', []
       {name: "Knife", packed: false},
     ]
 ]
+angular.module 'myApp', ['ngMaterial', 'list']

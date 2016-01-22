@@ -39,3 +39,4 @@ angular.module 'gridlist', []
 
     $scope.hideFooter = -> $mdMedia 'sm'
 ]
+angular.module 'myApp', ['ngMaterial', 'gridlist']

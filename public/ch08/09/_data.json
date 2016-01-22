@@ -1,0 +1,7 @@
+{
+    "index": {
+        "controller": "GridListController",
+        "style": true,
+        "title": "Grid list"
+    }
+}

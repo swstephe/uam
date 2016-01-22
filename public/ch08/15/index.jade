@@ -1,11 +1,5 @@
 extends ../layout
 
-block vars
-  - var controller = 'GridListController'
-  - var script = '15.js'
-  - var style = '15.css'
-  - var title = "Grid list"
-
 block content
   md-toolbar.md-toolbar-tools
     h1 Grid list
@@ -23,8 +17,3 @@ block content
         md-icon.material-icons(
           ng-class="item.light ? 'light-text' : 'dark-text'"
         ) album
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'gridlist']

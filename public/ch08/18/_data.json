@@ -1,0 +1,7 @@
+{
+    "index": {
+        "controller": "VirtualRepeatController",
+        "style": true,
+        "title": "Virtual repeat"
+    }
+}

@@ -9,3 +9,4 @@ angular.module 'list', []
       {name: "Battery check", icon: "battery_alert"}
     ]
 ]
+angular.module 'myApp', ['ngMaterial', 'list']

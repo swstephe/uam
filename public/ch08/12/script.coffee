@@ -25,3 +25,4 @@ angular.module 'gridlist', []
       {name: "Black",       color: "#000000",   light: true}
     ]
 ]
+angular.module 'myApp', ['ngMaterial', 'gridlist']
