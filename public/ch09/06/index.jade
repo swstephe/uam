@@ -1,10 +1,5 @@
 extends ../layout
 
-block vars
-  - var body_attrs = {'ng-controller':'ChipsController'}
-  - var script = '06.js'
-  - var title = "Chips with template"
-
 block content
   md-toolbar.md-toolbar-tools
     h1 Chips with item templates
@@ -14,8 +9,3 @@ block content
         md-chip-template {{$chip.name}} (<em>{{$chip.size}}</em>)
       div: code {{fishList | json}}
     md-divider
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'chips']

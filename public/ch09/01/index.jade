@@ -1,11 +1,5 @@
 extends ../layout
 
-block vars
-  - var body_attrs = {'ng-controller':'ProgressController'}
-  - var script = '01.js'
-  - var style = '01.css'
-  - var title = "Circular progress"
-
 block content
   md-toolbar.md-toolbar-tools
     h1 Progress ring
@@ -53,8 +47,3 @@ block content
             style='height: 96px'
           )
     md-divider
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'progress']

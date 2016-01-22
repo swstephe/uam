@@ -50,3 +50,4 @@ angular.module 'toast', []
         $interval.cancel handler
         handler = undefined
 ]
+angular.module 'myApp', ['ngMaterial', 'toast']

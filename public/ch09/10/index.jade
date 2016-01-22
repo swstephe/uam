@@ -1,10 +1,5 @@
 extends ../layout
 
-block vars
-  - var body_attrs = {'ng-controller':'ToastController'}
-  - var script = '10.js'
-  - var title = "Toast with template"
-
 block content
   md-toolbar.md-toolbar-tools
     h1 Toast with template
@@ -19,8 +14,3 @@ block content
     ) Dismiss
     div(flex,layout-padding='')
       label {{dismissAction}}
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'toast']

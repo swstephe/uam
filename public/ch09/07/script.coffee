@@ -11,3 +11,4 @@ angular.module 'chips', []
       name: chip
       size: '???'
 ]
+angular.module 'myApp', ['ngMaterial', 'chips']

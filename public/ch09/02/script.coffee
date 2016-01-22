@@ -26,3 +26,4 @@ angular.module 'progress', []
 
     $scope.start()
 ]
+angular.module 'myApp', ['ngMaterial', 'progress']

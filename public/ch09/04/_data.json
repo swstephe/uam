@@ -1,0 +1,6 @@
+{
+    "index": {
+        "body": {"ng-controller": "ChipsController"},
+        "title": "Chips"
+    }
+}

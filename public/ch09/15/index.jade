@@ -1,11 +1,5 @@
 extends ../layout
 
-block vars
-  - var body_attrs = {'ng-controller':'CardController'}
-  - var script = '15.js'
-  - var style = '15.css'
-  - var title = "Header with Buttons"
-
 block content
   md-toolbar
     .md-toolbar-tools
@@ -33,8 +27,3 @@ block content
             md-button.md-raised.md-primary(
               ng-click="doAction($event, 'Log entry printed')"
             ) Print
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'card']

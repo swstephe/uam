@@ -1,5 +1,4 @@
-angular
-.module 'dives', []
+angular.module 'dives', []
 .controller 'DiveLogController', [
   '$scope'
   ($scope) ->
@@ -47,4 +46,12 @@ angular
 
     $scope.displayAll()
     true
+]
+angular.module 'myApp', ['ngMaterial', 'dives']
+.config [
+  '$mdThemingProvider'
+  ($mdThemingProvider) ->
+    $mdThemingProvider.theme 'default'
+    .primaryPalette 'red'
+    .accentPalette 'orange'
 ]

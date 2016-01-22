@@ -1,11 +1,5 @@
 extends ../layout
 
-block vars
-  - var body_attrs = {'ng-controller':'CardController'}
-  - var script = '14.js'
-  - var style = '14.css'
-  - var title = "Header with Buttons"
-
 block content
   md-toolbar
     .md-toolbar-tools
@@ -22,8 +16,3 @@ block content
             h2 {{card.title}}
             h3 {{card.site}}
           md-card-footer {{card.taken}}
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'card']

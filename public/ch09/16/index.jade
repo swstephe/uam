@@ -1,9 +1,5 @@
 extends ../layout
 
-block vars
-  - var style = '16.css'
-  - var title = "Tooltip"
-
 block content
   md-toolbar.md-toolbar-tools
     h1 Tooltip
@@ -28,8 +24,3 @@ block content
       md-checkbox(aria-label="Night mode")
         | Night mode
         md-tooltip(md-autohide,md-direction='bottom') Use night mode
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial']

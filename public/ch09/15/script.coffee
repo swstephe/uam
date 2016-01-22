@@ -1,5 +1,4 @@
-angular
-.module 'card', []
+angular.module 'card', []
 .controller 'CardController', [
   '$scope'
   '$mdToast'
@@ -33,3 +32,4 @@ angular
       $mdToast.show toast
       ev.stopPropagation()
 ]
+angular.module 'myApp', ['ngMaterial', 'card']

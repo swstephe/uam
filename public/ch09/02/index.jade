@@ -1,11 +1,5 @@
 extends ../layout
 
-block vars
-  - var body_attrs = {'ng-controller':'ProgressController'}
-  - var script = '02.js'
-  - var style = '02.css'
-  - var title = "Linear progress"
-
 block content
   md-toolbar.md-toolbar-tools
     h1 Linear progress
@@ -33,8 +27,3 @@ block content
         md-buffer-value='{{bufferValue}}'
       )
     md-divider
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'progress']

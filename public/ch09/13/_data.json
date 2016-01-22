@@ -1,0 +1,7 @@
+{
+    "index": {
+        "body": {"ng-controller": "DiveLogController"},
+        "style": true,
+        "title": "Header with Buttons"
+    }
+}

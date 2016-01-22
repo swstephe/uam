@@ -1,0 +1,7 @@
+{
+    "index": {
+        "body": {"ng-controller": "ChipsController"},
+        "style": true,
+        "title": "Chips with template"
+    }
+}

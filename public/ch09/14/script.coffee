@@ -25,3 +25,4 @@ angular
       site: "El Arouk"
     }]
 ]
+angular.module 'myApp', ['ngMaterial', 'card']

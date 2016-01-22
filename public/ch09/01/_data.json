@@ -1,0 +1,7 @@
+{
+    "index": {
+        "body": {"ng-controller": "ProgressController"},
+        "style": true,
+        "title": "Circular progress"
+    }
+}

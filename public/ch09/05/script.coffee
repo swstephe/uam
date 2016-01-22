@@ -9,3 +9,4 @@ angular.module 'chips', []
     ]
     $scope.roFishList = angular.copy $scope.fishList
 ]
+angular.module 'myApp', ['ngMaterial', 'chips']

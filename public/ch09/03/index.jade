@@ -1,8 +1,5 @@
 extends ../layout
 
-block vars
-  - var title = "Sliders"
-
 block content
   md-toolbar.md-toolbar-tools(ng-init='enabled=true')
     h1 Sliders
@@ -70,8 +67,3 @@ block content
         ng-model='slider5Value'
       )
     md-divider
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial']

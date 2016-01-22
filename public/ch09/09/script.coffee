@@ -30,3 +30,4 @@ angular.module 'toast', []
 
     $scope.dismissToast = -> $mdToast.cancel()
 ]
+angular.module 'myApp', ['ngMaterial', 'toast']

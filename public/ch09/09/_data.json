@@ -1,0 +1,6 @@
+{
+    "index": {
+        "body": {"ng-controller": "ToastController"},
+        "title": "Toast with action"
+    }
+}
