@@ -1,9 +1,5 @@
 extends ../layout
 
-block vars
-  - var script = '07.js'
-  - var title = "Catching the menu trigger"
-
 block content
   md-toolbar.md-toolbar-tools
     h1 Catching the menu trigger
@@ -26,8 +22,3 @@ block content
     .md-body-1(flex,layout-padding) Action Log
     md-divider
     .md-body-1(layout-padding,ng-repeat='item in actionLog') {{item.entry}}
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'menu']

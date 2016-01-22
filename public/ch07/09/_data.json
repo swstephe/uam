@@ -1,0 +1,6 @@
+{
+    "index": {
+        "controller": "DialogController",
+        "title": "Alert dialog"
+    }
+}

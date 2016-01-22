@@ -1,8 +1,5 @@
 extends ../layout
 
-block vars
-  - var script = '05.js'
-
 block content
   md-toolbar.md-toolbar-tools
     h1 Using menus
@@ -31,8 +28,3 @@ block content
             | &nbsp;Ascension phase
     md-divider
     .md-body-1(flex,layout-padding) Last action: {{lastAction}}
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'menu']

@@ -36,3 +36,4 @@ angular
         -> $scope.deleteStatus = "Delete canceled"
       )
 ]
+angular.module 'myApp', ['ngMaterial', 'dialog']

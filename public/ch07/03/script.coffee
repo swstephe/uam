@@ -6,3 +6,4 @@ angular.module 'menu', []
     $scope.handle = ($event) ->
       $scope.lastAction = $event.target.innerText
 ]
+angular.module 'myApp', ['ngMaterial', 'menu']

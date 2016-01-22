@@ -1,17 +1,7 @@
 extends ../layout
 
-block vars
-  - var controller = 'DialogController'
-  - var script = '08.js'
-  - var title = "Alert dialog"
-
 block content
   md-toolbar.md-toolbar-tools
     h1 Alert dialog
   md-content(layout,layout-padding)
     md-button.md-raised.md-accent(ng-click='showAlert()') Show an alert
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'dialog']

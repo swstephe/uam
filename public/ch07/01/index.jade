@@ -1,8 +1,5 @@
 extends ../layout
 
-block vars
-  - var script = '01.js'
-
 block content
   md-toolbar.md-toolbar-tools
     h1 Using menus
@@ -19,8 +16,3 @@ block content
           md-button(ng-click='handle($event)') Attach pictures
     md-divider
     .md-body-1(flex,layout-padding) Last action: {{lastAction}}
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'menu']

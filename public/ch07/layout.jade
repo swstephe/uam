@@ -20,7 +20,7 @@ html(lang='en')
       href='//fonts.googleapis.com/icon?family=Material+Icons'
     )
     if style
-      link(rel='stylesheet',href=style)
+      link(rel='stylesheet',href='style.css')
 
   body(
     ng-app='myApp'
@@ -28,12 +28,10 @@ html(lang='en')
     ng-controller=controller || 'MenuController'
   )
     block content
-    block scripts
-      script(src='/angular/angular.js')
-      script(src='/angular-animate/angular-animate.js')
-      if messages
-        script(src='/angular-messages/angular-messages.js')
-      script(src='/angular-aria/angular-aria.js')
-      script(src='/angular-material/angular-material.js')
-      if script
-        script(src=script)
+    script(src='/angular/angular.js')
+    script(src='/angular-animate/angular-animate.js')
+    if messages
+      script(src='/angular-messages/angular-messages.js')
+    script(src='/angular-aria/angular-aria.js')
+    script(src='/angular-material/angular-material.js')
+    script(type='text/javascript',src='script.js')

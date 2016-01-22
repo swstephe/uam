@@ -13,3 +13,4 @@ angular.module 'menu', []
         id: $scope.actionLog.length
         entry: "*** Menu opened"
 ]
+angular.module 'myApp', ['ngMaterial', 'menu']

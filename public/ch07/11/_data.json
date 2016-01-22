@@ -1,0 +1,7 @@
+{
+    "index": {
+        "controller": "DialogController",
+        "style": true,
+        "title": "Confirmation dialog"
+    }
+}
