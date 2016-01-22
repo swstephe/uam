@@ -1,0 +1,8 @@
+{
+    "index": {
+        "messages": true,
+        "script": true,
+        "style": true,
+        "title": "Simple form"
+    }
+}

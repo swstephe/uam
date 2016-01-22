@@ -32,7 +32,9 @@ angular.module 'autocomplete', []
     ]
     $scope.cities = cities.sort()
     $scope.getMatchingCities = (searchKey) ->
+      return $scope.cities unless searchKey
       $scope.cities.filter (item) ->
         key = searchKey.toLowerCase()
         item.toLowerCase().indexOf(key) >= 0
 ]
+angular.module 'myApp', ['ngMaterial', 'autocomplete']

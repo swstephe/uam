@@ -17,7 +17,6 @@ angular.module 'radiobutton', []
         "Under 300 feet"
         "300-600 feet"
       ]
-      explain: "Between sea level and 600 feet"
     },{
       category: "High"
       levels: [
@@ -25,14 +24,13 @@ angular.module 'radiobutton', []
         "1200-1800 feet"
         "1800-2400 feet"
       ]
-      explain: "Between 600 and 2400 feet"
     },{
       category: "Extreme"
       levels: [
         "2400-4800 feet"
         "Over 4800 feet"
       ]
-      explain: "Above 2400 feet"
     }]
     $scope.register = (diveInfo) -> $scope.diveInfo = diveInfo
 ]
+angular.module 'myApp', ['ngMaterial', 'radiobutton']

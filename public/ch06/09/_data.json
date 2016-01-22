@@ -1,0 +1,10 @@
+{
+    "index": {
+        "body": {
+            "ng-controller": "SimpleFormController"
+        },
+        "script": true,
+        "style": true,
+        "title": "Radio buttons with custom labels"
+    }
+}

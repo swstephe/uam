@@ -1,8 +1,7 @@
 angular.module 'select', []
 .controller 'SimpleFormController', [
   '$scope'
-  '$q'
-  ($scope, $q) ->
+  ($scope) ->
     $scope.diveInfo = {}
     $scope.diveTypes = [
       {id: 0, name: "Normal"}
@@ -11,7 +10,7 @@ angular.module 'select', []
       {id: 3, name: "Cave dive"}
       {id: 4, name: "Deep dive"}
     ]
-    altitudes = [{
+    $scope.altitudeTypes = [{
       category: "Low"
       levels: [
         "Sea level"
@@ -33,12 +32,5 @@ angular.module 'select', []
       ]
     }]
     $scope.register = (diveInfo) -> $scope.diveInfo = diveInfo
-    $scope.initAltitudeTypes = ->
-      return if $scope.altitudeTypes
-      deferred = $q.defer()
-      setTimeout ->
-        $scope.altitudeTypes = altitudes
-        deferred.resolve()
-      , 2000
-      deferred.promise
 ]
+angular.module 'myApp', ['ngMaterial', 'ngMessages', 'select']

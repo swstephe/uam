@@ -1,11 +1,5 @@
 extends ../layout
 
-block vars
-  - var messages = true
-  - var script = '20.js'
-  - var style = '20.css'
-  - var title = "Simple form"
-
 block content
   md-toolbar.md-toolbar-tools
     h1 $mdDateLocaleProvider
@@ -25,9 +19,4 @@ block content
     md-divider
     div(layout-margin,layout-padding)
       code {{user.diveDate | json}}
-
-append scripts
   script(src='moment.js')
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'ngMessages', 'datepicker']

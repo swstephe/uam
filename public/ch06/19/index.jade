@@ -1,12 +1,5 @@
 extends ../layout
 
-block vars
-  - var body_attrs = {'ng-controller': 'SimpleFormController'}
-  - var messages = true
-  - var script = '19.js'
-  - var style = '19.css'
-  - var title = "Datepicker"
-
 block content
   md-toolbar.md-toolbar-tools
     h1 Datepicker
@@ -17,7 +10,7 @@ block content
       | Your dive must not be older than 3 months.
     form(name='simple',novalidate,layout-margin)
       md-checkbox(ng-model='user.hasDive') I have an eligible dive
-      div(layout='column',style='margin:0 0 24px 32px;',layout-margin)
+      div(layout='column',style={'margin':'0 0 24px 32px'},layout-margin)
         md-input-container(md-no-float)
           input(
             name='diveSite'
@@ -39,7 +32,7 @@ block content
           required
           md-min-date='minDate'
           md-max-date='maxDate'
-          style='margin-left: -16px;'
+          style={'margin-left': '-16px'}
         )
         .validation-messages(
           ng-messages='simple.diveDate.$error'
@@ -53,8 +46,3 @@ block content
     md-divider
     div(layout-margin)
       code {{registeredUser|json}}
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'ngMessages', 'datepicker']

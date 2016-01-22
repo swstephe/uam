@@ -1,12 +1,5 @@
 extends ../layout
 
-block vars
-  - var body_attrs = {'ng-controller': 'SimpleFormController'}
-  - var messages = true
-  - var script = '17.js'
-  - var style = '17.css'
-  - var title = "Autocomplete"
-
 block content
   md-toolbar.md-toolbar-tools
     h1 Autocomplete
@@ -45,8 +38,3 @@ block content
       p
         | Control value:&#32;
         code {{simple.city.$modelValue}}
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'ngMessages', 'autocomplete']

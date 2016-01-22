@@ -1,11 +1,5 @@
 extends ../layout
 
-block vars
-  - var body_attrs = {'ng-controller':'SimpleFormController'}
-  - var messages = true
-  - var script = '05.js'
-  - var title = "Using select"
-
 block content
   md-toolbar.md-toolbar-tools
     h1 Using select
@@ -36,8 +30,3 @@ block content
     md-divider
     div(layout-margin)
       code {{diveInfo|json}}
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'ngMessages', 'select']

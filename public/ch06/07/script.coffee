@@ -1,7 +1,8 @@
-angular.module 'radiobutton', []
+angular.module 'select', []
 .controller 'SimpleFormController', [
   '$scope'
-  ($scope) ->
+  '$q'
+  ($scope, $q) ->
     $scope.diveInfo = {}
     $scope.diveTypes = [
       {id: 0, name: "Normal"}
@@ -10,7 +11,7 @@ angular.module 'radiobutton', []
       {id: 3, name: "Cave dive"}
       {id: 4, name: "Deep dive"}
     ]
-    $scope.altitudeTypes = [{
+    altitudes = [{
       category: "Low"
       levels: [
         "Sea level"
@@ -32,4 +33,13 @@ angular.module 'radiobutton', []
       ]
     }]
     $scope.register = (diveInfo) -> $scope.diveInfo = diveInfo
+    $scope.initAltitudeTypes = ->
+      return if $scope.altitudeTypes
+      deferred = $q.defer()
+      setTimeout ->
+        $scope.altitudeTypes = altitudes
+        deferred.resolve()
+      , 2000
+      deferred.promise
 ]
+angular.module 'myApp', ['ngMaterial', 'select']

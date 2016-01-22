@@ -20,3 +20,4 @@ angular.module 'datepicker', []
         diveSite: user.diveSite
         diveDate: user.diveDate
 ]
+angular.module 'myApp', ['ngMaterial', 'ngMessages', 'datepicker']

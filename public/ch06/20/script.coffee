@@ -64,3 +64,4 @@ angular
     $mdDateLocaleProvider.msgCalendar = "kalendaro"
     $mdDateLocaleProvider.msgOpenCalendar = "malferma kalendaro"
   ]
+angular.module 'myApp', ['ngMaterial', 'ngMessages', 'datepicker']

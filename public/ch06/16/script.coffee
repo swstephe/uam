@@ -37,3 +37,4 @@ angular.module 'autocomplete', []
         key = searchKey.toLowerCase()
         item.toLowerCase().indexOf(key) >= 0
 ]
+angular.module 'myApp', ['ngMaterial', 'ngMessages', 'autocomplete']

@@ -1,7 +1,9 @@
 angular.module 'autocomplete', []
 .controller 'SimpleFormController', [
-  '$scope',
-  ($scope) ->
+  '$scope'
+  '$q'
+  '$timeout'
+  ($scope, $q, $timeout) ->
     cities = [
       {name: "Budapest", hotels: 100, restaurants: 431}
       {name: "Brussels", hotels: 100, restaurants: 431}
@@ -32,9 +34,17 @@ angular.module 'autocomplete', []
     ]
     $scope.cities = cities.sort (a,b) ->
       if a.name > b.name then 1 else if a.name < b.name then -1 else 0
+
     $scope.getMatchingCities = (searchKey) ->
-      return $scope.cities unless searchKey
-      $scope.cities.filter (item) ->
-        key = searchKey.toLowerCase()
-        item.name.toLowerCase().indexOf(key) >= 0
+      deferred = $q.defer()
+      $timeout(->
+        result = $scope.cities
+        if searchKey
+          result = $scope.cities.filter (item)->
+            key = searchKey.toLowerCase()
+            item.name.toLowerCase().indexOf(key) >= 0
+        deferred.resolve result
+      , 3000)
+      deferred.promise
 ]
+angular.module 'myApp', ['ngMaterial', 'ngMessages', 'autocomplete']

@@ -1,10 +1,5 @@
 extends ../layout
 
-block vars
-  - var body_attrs = {'ng-controller':'SimpleFormController'}
-  - var script = '07.js'
-  - var title = "Using select"
-
 block content
   md-toolbar.md-toolbar-tools
     h1 Select with async loading
@@ -40,8 +35,3 @@ block content
     md-divider
     div(layout-margin)
       code {{diveInfo|json}}
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'select']

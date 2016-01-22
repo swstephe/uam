@@ -1,0 +1,11 @@
+{
+    "index": {
+        "body": {
+            "ng-controller": "SimpleFormController"
+        },
+        "messages": true,
+        "script": true,
+        "style": true,
+        "title": "Autocomplete"
+    }
+}

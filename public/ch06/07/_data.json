@@ -1,0 +1,9 @@
+{
+    "index": {
+        "body": {
+            "ng-controller": "SimpleFormController"
+        },
+        "script": true,
+        "title": "Using select"
+    }
+}

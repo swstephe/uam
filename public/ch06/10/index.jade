@@ -1,8 +1,5 @@
 extends ../layout
 
-block vars
-  - var title = "Checkboxes"
-
 block content
   // Single column
   md-toolbar.md-toolbar-tools
@@ -18,8 +15,3 @@ block content
     md-divider
     div(layout-margin)
       code {{gear|json}}
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial']
