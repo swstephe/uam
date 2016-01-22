@@ -2,7 +2,6 @@
     "index": {
         "body": {},
         "fonts": "400,500,700,900,300italic,400italic,500italic,900italic",
-        "script": true,
         "style": true,
         "title": "Heading styles"
     }

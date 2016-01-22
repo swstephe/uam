@@ -1,6 +1,5 @@
 {
     "index": {
-        "script": true,
         "style": true,
         "title": "Title & body styles"
     }

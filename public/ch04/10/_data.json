@@ -1,6 +1,5 @@
 {
     "index": {
-        "script": true,
         "style": "../icons/sprite-communication-black.css",
         "title": "Themes"
     }
