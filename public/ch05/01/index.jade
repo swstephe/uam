@@ -1,11 +1,5 @@
 extends ../layout
 
-block vars
-    - var body_attrs = {'ng-controller':'DiveLogController'}
-    - var script = '01.js'
-    - var style = '01.css'
-    - var title = "Header with Buttons"
-
 block content
   div(layout='column',latout-fill)
     md-toolbar
@@ -34,13 +28,3 @@ block content
             h2 {{dive.depth}} feet | {{dive.time}} min
     md-toolbar
       .md-toolbar-tools Powered by Angular Material
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular
-      .module 'myApp', ['ngMaterial', 'dives']
-      .config ($mdThemingProvider) ->
-        $mdThemingProvider.theme 'default'
-        .primaryPalette 'red'
-        .accentPalette 'orange'

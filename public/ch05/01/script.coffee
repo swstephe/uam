@@ -45,3 +45,11 @@ angular
     $scope.displayAll()
     true
 ]
+angular.module 'myApp', ['ngMaterial', 'dives']
+.config [
+  '$mdThemingProvider'
+  ($mdThemingProvider) ->
+    $mdThemingProvider.theme 'default'
+    .primaryPalette 'red'
+    .accentPalette 'orange'
+]

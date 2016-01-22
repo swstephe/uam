@@ -1,0 +1,7 @@
+{
+    "index": {
+        "body": {"ng-controller": "TabsController"},
+        "script": true,
+        "title": "Header with Buttons"
+    }
+}

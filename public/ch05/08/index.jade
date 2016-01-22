@@ -1,9 +1,5 @@
 extends ../layout
 
-block vars
-  - var body_attrs = {'layout-fill': true}
-  - var title = "Tabs with no bar"
-
 block content
   md-toolbar
     .md-toolbar-tools My latest dive
@@ -26,12 +22,3 @@ block content
             This tab will display the photos taken during the dive
   md-toolbar.md-accent
     .md-toolbar-tools Younderwater, 2015
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial']
-      .config ($mdThemingProvider) ->
-        $mdThemingProvider.theme 'default'
-        .primaryPalette 'blue'
-        .accentPalette 'orange'

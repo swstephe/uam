@@ -1,9 +1,5 @@
 extends ../layout
 
-block vars
-  - var body_attrs = {'layout-fill': true}
-  - var title = "Header with Buttons"
-
 block content
   md-toolbar.md-tall(md-scroll-shrink,md-shrink-speed-factor=0.2)
     .md-toolbar-tools.md-toolbar-tools-bottom Night Dive Rules
@@ -15,8 +11,3 @@ block content
       h1.md-display-2 Rule #123
   md-toolbar.md-medium-tall.md-accent
     .md-toolbar-tools Powered by Angular Material
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial']

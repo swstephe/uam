@@ -1,0 +1,7 @@
+{
+    "index": {
+        "body": {"layout-fill": true},
+        "script": true,
+        "title": "Dynamic tab content height"
+    }
+}

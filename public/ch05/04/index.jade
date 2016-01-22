@@ -1,9 +1,5 @@
 extends ../layout
 
-block vars
-  - var body_attrs = {'ng-controller': 'TabsController'}
-  - var title = "Header with Buttons"
-
 block content
   div(layout='column',layout-fill)
     md-toolbar
@@ -15,19 +11,3 @@ block content
         md-tab(label="Photos", md-on-select="tabSelected('Third tab')")
       div(flex,layout-padding)
         p.md-display-2 {{activeTab}}
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular.module 'tabs', []
-      .controller 'TabsController', [
-        '$scope'
-        ($scope) ->
-          $scope.activeTab = ''
-          $scope.tabSelected = (tab) -> $scope.activeTab = tab
-      ]
-      angular.module 'myApp', ['ngMaterial', 'tabs']
-      .config ($mdThemingProvider) ->
-        $mdThemingProvider.theme 'default'
-        .primaryPalette 'blue'
-        .accentPalette 'orange'

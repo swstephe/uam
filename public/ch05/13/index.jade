@@ -1,11 +1,5 @@
 extends ../layout
 
-block vars
-  - var body_attrs = {'layout-fill': true}
-  - var script = '13.js'
-  - var style = '13.css'
-  - var title = "Dynamic tab content height"
-
 block content
   md-toolbar
     .md-toolbar-tools My favorite dive sites
@@ -21,12 +15,3 @@ block content
             | {{item.toString()}}
   md-toolbar.md-accent
     .md-toolbar-tools Younderwater, 2015
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'divesites']
-      .config ($mdThemingProvider) ->
-        $mdThemingProvider.theme 'default'
-        .primaryPalette 'blue'
-        .accentPalette 'orange'

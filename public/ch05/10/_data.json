@@ -1,0 +1,10 @@
+{
+    "index": {
+        "body": {
+            "layout-fill": true,
+            "ng-controller":"DiveSitesController"
+        },
+        "script": true,
+        "title": "Dynamic tabs"
+    }
+}

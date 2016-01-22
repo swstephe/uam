@@ -14,7 +14,14 @@ angular.module 'divesites', []
       "Um Gamar"
       "Bluff Point"
     ]
-    $scope.selectedIndex = 0
-    $scope.disableEven = false
+    $scope.getSiteInfo = (index) -> "Item ##{i}" for i in [1..index]
     true
+]
+angular.module 'myApp', ['ngMaterial', 'divesites']
+.config [
+  '$mdThemingProvider'
+  ($mdThemingProvider) ->
+    $mdThemingProvider.theme 'default'
+    .primaryPalette 'blue'
+    .accentPalette 'orange'
 ]
