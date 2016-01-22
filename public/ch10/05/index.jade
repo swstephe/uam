@@ -1,9 +1,5 @@
 extends ../layout
 
-block vars
-  - var script = '05.js'
-  - var style = '05.css'
-
 block content
   md-toolbar
     .md-toolbar-tools
@@ -47,8 +43,3 @@ block content
               ng-class="tag.selected ? 'md-raised md-accent' : ''"
               ng-click="toggleTag(tag)"
             ) {{tag.name}}
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'divelog']

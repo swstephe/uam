@@ -1,9 +1,5 @@
 extends ../layout
 
-block vars
-  - var script = '02.js'
-  - var style = '02.css'
-
 block content
   md-toolbar
     .md-toolbar-tools Younderwater Dive Log
@@ -33,8 +29,3 @@ block content
               h3 {{dive.location}}
             md-card-footer
               span.tag(ng-repeat='tag in dive.tags') {{tag.toString()}}
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'divelog']

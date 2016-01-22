@@ -124,7 +124,8 @@ angular.module 'divelog', []
     $scope.closeTags = -> $mdSidenav('tagsFilter').close()
     $scope.showfiltered = -> tagsHidden() and
       getFilteredTags().length > 0
-    $scope.isFilterOn = -> getFilteredTags().length > 0
+    $scope.isFilterOn = -> return getFilteredTags().length > 0
     getFilteredTags = -> $scope.tags.filter (tag) -> tag.selected
     tagsHidden = => not $mdMedia 'gt-md'
 ]
+angular.module 'myApp', ['ngMaterial', 'divelog']

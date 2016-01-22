@@ -128,3 +128,4 @@ angular.module 'divelog', []
     getFilteredTags = -> $scope.tags.filter (tag) -> tag.selected
     tagsHidden = => not $mdMedia 'gt-md'
 ]
+angular.module 'myApp', ['ngMaterial', 'divelog']

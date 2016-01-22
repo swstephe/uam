@@ -123,7 +123,6 @@ angular.module 'divelog', []
         targetEvent: ev
       )
 ]
-
 .controller 'BottomSheetController', [
   '$scope'
   '$mdBottomSheet'
@@ -154,3 +153,4 @@ angular.module 'divelog', []
       $mdBottomSheet.hide message
 
 ]
+angular.module 'myApp', ['ngMaterial', 'divelog']

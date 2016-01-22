@@ -2,8 +2,7 @@ angular.module 'divelog', []
 .controller 'DiveLogController', [
   '$scope'
   '$mdBottomSheet'
-  '$mdToast'
-  ($scope, $mdBottomSheet, $mdToast) ->
+  ($scope, $mdBottomSheet) ->
     $scope.dives = [{
       site:       "Abu Gotta Ramada"
       location:   "Hurghada, Egypt"
@@ -112,34 +111,23 @@ angular.module 'divelog', []
     }]
 
     $scope.selectedDive = $scope.dives[0]
-    $scope.setDive = (dive) ->
-      $scope.selectedDive = dive
-      $mdBottomSheet.cancel()
+    $scope.setDive = (dive) -> $scope.selectedDive = dive
     $scope.showBottomSheet = (ev) ->
       parentPanel = angular.element(
         document.querySelector('#parentPanel')
       )
       $mdBottomSheet.show(
-        templateUrl: 'bottom.html'
+        templateUrl: 'bottom-sheet-template.html'
         controller: 'BottomSheetController'
         parent: parentPanel
         targetEvent: ev
-        locals:
-          dive: $scope.selectedDive
-        bindToController: true
-        controllerAs: 'ctrl'
       )
-      .then (response) ->
-        toast = $mdToast.simple()
-        .content response
-        .position 'top right'
-        .hideDelay 3000
-        $mdToast.show toast
 ]
 .controller 'BottomSheetController', [
   '$scope'
   '$mdBottomSheet'
-  ($scope, $mdBottomSheet) ->
+  '$mdToast'
+  ($scope, $mdBottomSheet, $mdToast) ->
     $scope.actions = [{
       name: "Share with buddies"
       icon: 'share'
@@ -156,6 +144,13 @@ angular.module 'divelog', []
       color: '#F44336'
       done: "Marked as favorite."
     }]
-    $scope.doAction = (message) -> $mdBottomSheet.hide message
-    true
+    $scope.doAction = (message) ->
+      toast = $mdToast.simple()
+      .content message
+      .position 'top right'
+      .hideDelay 3000
+      $mdToast.show toast
+      $mdBottomSheet.hide message
+
 ]
+angular.module 'myApp', ['ngMaterial', 'divelog']

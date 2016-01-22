@@ -1,9 +1,5 @@
 extends ../layout
 
-block vars
-  - var script = '04.js'
-  - var style = '04.css'
-
 block content
   md-toolbar
     .md-toolbar-tools
@@ -47,8 +43,3 @@ block content
               h3 {{dive.location}}
             md-card-footer
               span.tag(ng-repeat='tag in dive.tags') {{tag.toString()}}
-
-append scripts
-  script
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial', 'divelog']

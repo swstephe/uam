@@ -1,7 +1,9 @@
 angular.module 'divelog', []
 .controller 'DiveLogController', [
   '$scope'
-  ($scope) ->
+  '$mdMedia'
+  '$mdSidenav'
+  ($scope, $mdMedia, $mdSidenav) ->
     dives = [{
       site:       "Abu Gotta Ramada"
       location:   "Hurghada, Egypt"
@@ -103,14 +105,27 @@ angular.module 'divelog', []
       name: tag
       count: tags[tag]
       selected: false
-    $scope.tags = tagList.sort (a,b) ->
-        return -1 if a.name < b.name
-        return 1 if a.name > b.name
-        0
+    $scope.tags = tagList.sort (a,b) -> switch
+        when a.name < b.name then -1
+        when a.name > b.name then 1
+        else 0
     $scope.toggleTag = (tag) -> tag.selected = not tag.selected
     $scope.getFilteredDives = ->
-      filterTags = $scope.tags.filter (tag) -> tag.selected
+      filterTags = getFilteredTags()
       filteredDives = $scope.dives.filter (dive) ->
         filterTags.every (value) ->
           dive.tags.indexOf(value.name) >= 0
+    $scope.hideTagBar = -> tagsHidden()
+    $scope.enableShowTags = -> tagsHidden() and
+      not $mdSidenav('tagsFilter').isOpen()
+    $scope.showTags = -> $mdSidenav('tagsFilter').open()
+    $scope.enableCloseTags = -> tagsHidden() and
+      $mdSidenav('tagsFilter').isOpen()
+    $scope.closeTags = -> $mdSidenav('tagsFilter').close()
+    $scope.showfiltered = -> tagsHidden() and
+      getFilteredTags().length > 0
+    $scope.isFilterOn = -> getFilteredTags().length > 0
+    getFilteredTags = -> $scope.tags.filter (tag) -> tag.selected
+    tagsHidden = => not $mdMedia 'gt-md'
 ]
+angular.module 'myApp', ['ngMaterial', 'divelog']

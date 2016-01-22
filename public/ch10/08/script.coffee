@@ -135,7 +135,6 @@ angular.module 'divelog', []
         .hideDelay 3000
         $mdToast.show toast
 ]
-
 .controller 'BottomSheetController', [
   '$scope'
   '$mdBottomSheet'
@@ -159,3 +158,4 @@ angular.module 'divelog', []
     $scope.doAction = (message) -> $mdBottomSheet.hide message
     true
 ]
+angular.module 'myApp', ['ngMaterial', 'divelog']
