@@ -1,9 +1,5 @@
 extends ../layout
 
-block vars
-  - var style = '16.css'
-  - var title = "Icons"
-
 block content
   .svg-icons(layout='column',layout-fill)
     md-toolbar
@@ -65,13 +61,3 @@ block content
             md-svg-src='../icons/ic_memory_24px.svg'
             style={'color': 'purple'}
           )
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular
-      .module 'myApp', ['ngMaterial']
-      .config ($mdIconProvider) ->
-        $mdIconProvider.fontSet 'gi', 'glyphicon'
-        $mdIconProvider.fontSet 'md', 'material-icons'
-        $mdIconProvider.defaultFontSet 'glyphicon'

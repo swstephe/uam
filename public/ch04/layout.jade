@@ -11,17 +11,19 @@ html(lang='en')
       content='initial-scale=1,maximum-scale=1,user-scalable=no'
     )
     link(rel='stylesheet',href='/angular-material/angular-material.css')
-    - var fonts = fonts || '300,400,500,700,400italic'
     link(
       rel='stylesheet'
-      href="//fonts.googleapis.com/css?family=Roboto:#{fonts}"
+      href="//fonts.googleapis.com/css?family=Roboto:#{fonts || '300,400,500,400italic'}"
     )
     link(
       rel='stylesheet'
       href='//fonts.googleapis.com/icon?family=Material+Icons'
     )
     if style
-      link(rel='stylesheet',href=style)
+      if style == true
+        link(rel='stylesheet',href='style.css')
+      else
+        link(rel='stylesheet',href=style)
 
   body(ng-app='myApp',layout='column')&attributes(body_attrs||{})
     block content
@@ -31,4 +33,4 @@ html(lang='en')
       script(src='/angular-aria/angular-aria.js')
       script(src='/angular-material/angular-material.js')
       if script
-        script(src=script)
+        script(type='text/javascript',src='script.js')

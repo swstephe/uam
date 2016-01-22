@@ -1,8 +1,5 @@
 extends ../layout
 
-block vars
-  - var title = "Themes"
-
 block content
   md-toolbar
     .md-toolbar-tools
@@ -44,22 +41,3 @@ block content
     md-toolbar
       .md-toolbar-tools
           Changes with theme
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular
-      .module 'myApp', ['ngMaterial']
-      .config ($mdThemingProvider) ->
-        $mdThemingProvider
-        .theme 'custom1Theme'
-        .primaryPalette 'orange'
-        .accentPalette 'blue'
-        .warnPalette 'pink'
-        $mdThemingProvider
-        .theme  'custom2Theme'
-        .primaryPalette 'green'
-        .accentPalette 'lime'
-        .warnPalette 'pink'
-        .dark()
-        $mdThemingProvider.alwaysWatchTheme true

@@ -1,9 +1,5 @@
 extends ../layout
 
-block vars
-  - var style = '14.css'
-  - var title = "Icons"
-
 block content
   div(layout='column',layout-fill)
     md-toolbar
@@ -62,8 +58,3 @@ block content
           | Purple
           br
           md-icon.glyphicon.glass.size-36.red(style={'color':'purple'})
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial']

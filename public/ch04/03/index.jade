@@ -1,9 +1,5 @@
 extends ../layout
 
-block vars
-  - var title = "Title & body styles"
-  - var style = '03.css'
-
 block content
   div(layout='column',layout-fill)
     md-toolbar
@@ -16,8 +12,3 @@ block content
       div(flex): span.md-body-2 <em>md-body-2</em> is a bit stronger
       div(flex): span.md-button Look, this is <em>md-button</em>!
       div(flex): span.md-caption Use <em>md-caption</em> for figures and tables
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial']

@@ -1,9 +1,5 @@
 extends ../layout
 
-block vars
-  - var title = "Themes"
-  - var style = '../icons/sprite-communication-black.css'
-
 block content
   md-toolbar
     .md-toolbar-tools Image files
@@ -29,8 +25,3 @@ block content
     div(flex=33)
       | Chat
       .icon-communication-black.icon-communication-black-ic_chat_black_24dp
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial']

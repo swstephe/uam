@@ -1,9 +1,5 @@
 extends ../layout
 
-block vars
-  - var style = '15.css'
-  - var title = "Icons"
-
 block content
   div(layout='column',layout-fill)
     md-toolbar
@@ -61,14 +57,8 @@ block content
         div(flex=25)
           | Purple
           br
-          md-icon(md-font-set='gi',md-font-icon='glass size-36',style='color: purple')
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular
-      .module 'myApp', ['ngMaterial']
-      .config ($mdIconProvider) ->
-        $mdIconProvider.fontSet 'gi', 'glyphicon'
-        $mdIconProvider.fontSet 'md', 'material-icons'
-        $mdIconProvider.defaultFontSet 'glyphicon'
+          md-icon(
+            md-font-set='gi'
+            md-font-icon='glass size-36'
+            style={'color': 'purple'}
+          )

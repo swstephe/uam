@@ -1,9 +1,5 @@
 extends ../layout
 
-block vars
-  - var style = '02.css'
-  - var title = "Heading styles"
-
 block content
   md-toolbar
     .md-toolbar-tools Heading styles
@@ -16,8 +12,3 @@ block content
     div(flex=50): h2.md-display-3 &lt;h2&gt; <small>md-display-3</small>
     div(flex=50): h4.md-display-4 &lt;h4&gt; <small>md-display-4</small>
     div(flex=50): h1.md-display-4 &lt;h1&gt; <small>md-display-4</small>
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial']

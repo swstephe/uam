@@ -1,9 +1,5 @@
 extends ../layout
 
-block vars
-  - var style = '17.css'
-  - var title = "Icons"
-
 block content
   .svg-icons(layout='column',layout-fill)
     md-toolbar
@@ -62,13 +58,3 @@ block content
           | Purple
           br
           md-icon.size-36(md-svg-icon='memory',style={'color':'purple'})
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular
-      .module 'myApp', ['ngMaterial']
-      .config ($mdIconProvider) ->
-        $mdIconProvider.iconSet 'my', '../icons/myIconSet.svg'
-        $mdIconProvider.icon 'computer', '../icons/ic_computer_24px.svg'
-        $mdIconProvider.defaultIconSet '../icons/myIconSet.svg', 24

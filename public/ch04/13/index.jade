@@ -1,9 +1,5 @@
 extends ../layout
 
-block vars
-  - var style = '13.css'
-  - var title = "Icons"
-
 block content
   div(layout='column',layout-fill)
     md-toolbar
@@ -61,9 +57,4 @@ block content
         div(flex=25)
           | Purple
           br
-          md-icon.material-icons.icon-chat.size-36(style='color:purple')
-
-append scripts
-  script(type='text/javascript')
-    :coffee-script
-      angular.module 'myApp', ['ngMaterial']
+          md-icon.material-icons.icon-chat.size-36(style={'color':'purple'})

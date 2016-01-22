@@ -1,0 +1,9 @@
+{
+    "index": {
+        "body": {
+            "md-theme": "{{myTheme}}"
+        },
+        "script": true,
+        "title": "Themes"
+    }
+}
